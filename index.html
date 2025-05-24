@@ -1,46 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>M3'STREAM - ECOUTEZ ET REGARDEZ VOS MUSIQUES PREFERER</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" type="text/css" href="compt.css">
+	<title>M3'STREAM - Écoutez et regardez vos musiques préférées</title>
+	<link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="compt.css">
 </head>
 <body>
-	<!--En-tête-->
+
+	<!-- En-tête -->
 	<header>
-  <div class="logo">
-    <img src="M3Music.png" alt="Logo M3'STREAM" class="logo-img">
-  </div>
+		<div class="logo">
+			<img src="M3Music.png" alt="Logo M3'STREAM" class="logo-img">
+		</div>
 
-  <!-- Menu burger -->
-  <button class="burger" id="burger-btn">&#9776;</button>
+		<!-- Bouton burger + thème -->
+		<div class="top-buttons">
+			<button id="burger" class="burger">&#9776;</button>
+			<button id="theme-toggle" class="theme-toggle">🌙</button>
+		</div>
 
-  <nav id="nav-menu">
-    <ul>
-      <li><a href="index.html">Acceuil</a></li>
-      <li><a href="decouvrir.html">Découvrir</a></li>
-      <li><a href="clips.html">Clips</a></li>
-      <li><a href="playlists.html">Playlists</a></li>
-      <li><a href="albums.html">Albums</a></li>
-      <li><a href="#">Mon compte</a></li>
-    </ul>
-  </nav>
+		<nav>
+			<ul>
+				<li><a href="index.html">Accueil</a></li>
+				<li><a href="decouvrir.html">Découvrir</a></li>
+				<li><a href="clips.html">Clips</a></li>
+				<li><a href="playlists.html">Playlists</a></li>
+				<li><a href="albums.html">Albums</a></li>
+				<li><a href="#">Mon compte</a></li>
+			</ul>
+		</nav>
 
-  <div class="search-bar">
-    <input type="text" placeholder="Rechercher des artistes, albums...">
-    <button>Rechercher</button>
-  </div>
-</header>
+		<div class="search-bar">
+			<input type="text" placeholder="Rechercher des artistes, albums...">
+			<button>Rechercher</button>
+		</div>
+	</header>
 
-
-	<!--Section principale-->
+	<!-- Section principale -->
 	<section class="hero">
 		<div class="hero-content">
-			<h1>Ecoutez vos musiques préférées en illimité</h1>
+			<h1>Écoutez vos musiques préférées en illimité</h1>
 			<p>Des millions de chansons à portée de main, partout où vous allez.</p>
-			<button class="cta-btn">Ecoutez maintenant</button>
+			<button class="cta-btn">Écoutez maintenant</button>
 		</div>
 	</section>
 
@@ -65,7 +68,7 @@
 		</div>
 	</section>
 
-	<!--Pied de page-->
+	<!-- Pied de page -->
 	<footer>
 		<p>&copy; 2025 M3Stream. Tous droits réservés.</p>
 		<ul>
@@ -75,14 +78,32 @@
 		</ul>
 	</footer>
 
+	<!-- Script JS -->
 	<script>
-  		const burgerBtn = document.getElementById("burger-btn");
-  		const navMenu = document.getElementById("nav-menu");
+		const burger = document.getElementById('burger');
+		const nav = document.querySelector('nav');
+		const themeToggle = document.getElementById('theme-toggle');
+		const body = document.body;
 
-  		burgerBtn.addEventListener("click", () => {
-   	 	navMenu.classList.toggle("active");
- 		});
-</script>
+		// Toggle menu mobile
+		burger.addEventListener('click', () => {
+			nav.classList.toggle('active');
+		});
 
+		// Appliquer le thème sauvegardé
+		const savedTheme = localStorage.getItem('theme');
+		if (savedTheme) {
+			body.setAttribute('data-theme', savedTheme);
+			themeToggle.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+		}
+
+		// Changement de thème
+		themeToggle.addEventListener('click', () => {
+			const newTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+			body.setAttribute('data-theme', newTheme);
+			localStorage.setItem('theme', newTheme);
+			themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+		});
+	</script>
 </body>
 </html>
