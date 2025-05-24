@@ -1,5 +1,5 @@
 /*Rénitialisation des styles par défaut*/
-.{
+body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -365,4 +365,130 @@ footer ul li a{
 
 .contact-form button:hover{
     background-color: #009bb2;
+}
+
+/* Ajustements de base pour tous les éléments */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+/* Section du header */
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo img {
+  max-width: 120px;
+  height: auto;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Barre de recherche */
+.search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 5px;
+  min-width: 150px;
+}
+
+.search-bar button {
+  padding: 5px 10px;
+}
+
+/* Section musique */
+.music-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.music-item {
+  flex: 1 1 200px;
+  max-width: 250px;
+  text-align: center;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 20px;
+  background: #eee;
+}
+
+.cta-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 10px;
+  background: #222;
+  color: white;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+/* ✅ Media queries pour mobile */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .music-item {
+    max-width: 90%;
+  }
 }
