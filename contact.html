@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Stations - M3Stream</title>
+	<link rel="stylesheet" type="text/css" href="compt.css">
+</head>
+<body>
+	<!--En-tête-->
+	<header>
+		<div class="logo">
+			<img src="M3Music.png" alt="logo M3Stream" class="logo-img">
+		</div>
+		<nav>
+			<ul>
+				<li><a href="index.html">Acceuil</a></li>
+				<li><a href="decouvrir.html">Découvrir</a></li>
+				<li><a href="clips.html">Clips</a></li>
+				<li><a href="playlists.html">Playlists</a></li>
+				<li><a href="albums.html">Albums</a></li>
+				<li><a href="mon-compte.html">Mon Compte</a></li>
+			</ul>
+		</nav>
+		<div class="search-bar">
+			<input type="text" name="Rechercher des stations, genres...">
+			<button>Rechercher</button>
+		</div>
+	</header>
+
+   <!-- Section Contact -->
+    <section class="contact-section">
+        <h1>Contactez-nous</h1>
+        <p>Si vous avez des questions, des suggestions ou des demandes, nous serons ravis de vous entendre. Utilisez le formulaire ci-dessous pour nous envoyer un message, ou contactez-nous directement via nos informations ci-dessous.</p>
+
+        <div class="contact-info">
+            <h2>Informations de contact</h2>
+            <p><strong>Email :</strong> m3stream@gmail.com</p>
+            <p><strong>Téléphone :</strong> +269 456 56 56</p>
+            <p><strong>Adresse :</strong> Bangoi Hambou</p>
+        </div>
+
+        <!-- Formulaire de contact -->
+        <div class="contact-form">
+            <h2>Envoyer un message</h2>
+            <form action="submit_form.php" method="POST">
+                <label for="name">Votre nom :</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Votre email :</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Votre message :</label>
+                <textarea id="message" name="message" rows="6" required></textarea>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+	<!--Pied de page-->
+	<footer>
+		<p>&copy; 2025 M3Stream. Tous droits réservés.</p>
+		<ul>
+			<li><a href="a-propos.html">À propos</a></li>
+			<li><a href="contact.html">Contact</a></li>
+			<li><a href="#">Politique de confidentialité</a></li>
+		</ul>
+	</footer>
+</body>
+</html>
