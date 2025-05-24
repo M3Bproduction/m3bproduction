@@ -1,239 +1,184 @@
-/* RESET DES STYLES PAR DÉFAUT */
+
+/* Réinitialisation des styles par défaut */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 :root {
-  --primary-color: #00c0ff;
-  --primary-dark: #009bb2;
-  --text-color: #333;
-  --bg-color: #f4f4f4;
-  --header-bg: #1e1e1e;
-  --footer-bg: #1e1e1e;
-  --light: #ffffff;
-  --dark: #121212;
+    --bg: #f4f4f4;
+    --text: #333;
+    --accent: #00c0ff;
+    --accent-dark: #009bb2;
+    --card-bg: white;
+}
+
+/* Mode sombre */
+.dark {
+    --bg: #121212;
+    --text: #f5f5f5;
+    --accent: #1db954;
+    --accent-dark: #168f3e;
+    --card-bg: #1e1e1e;
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: var(--bg);
+    color: var(--text);
 }
 
-/* MODE SOMBRE */
-body.dark-mode {
-  --bg-color: var(--dark);
-  --text-color: var(--light);
-  --footer-bg: #1e1e1e;
-}
-
-/* HEADER */
+/* En-tête */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--header-bg);
-  padding: 20px;
-  color: white;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 20px;
+    color: white;
 }
 
 header .logo img {
-  width: 120px;
+    width: 120px;
 }
 
 header nav ul {
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-  gap: 10px;
+    display: flex;
+    list-style: none;
+}
+
+header nav ul li {
+    margin: 0 15px;
 }
 
 header nav ul li a {
-  text-decoration: none;
-  color: white;
-  font-weight: bold;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
 }
 
 .search-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .search-bar input {
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 10px;
+    width: 200px;
 }
 
 .search-bar button {
-  padding: 10px 15px;
-  background-color: var(--primary-color);
-  border: none;
-  border-radius: 20px;
-  color: white;
-  cursor: pointer;
+    padding: 10px 15px;
+    background-color: var(--accent);
+    border: none;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
 }
 
 .search-bar button:hover {
-  background-color: var(--primary-dark);
+    background-color: var(--accent-dark);
 }
 
-/* MENU RESPONSIVE */
-@media (max-width: 768px) {
-  header nav ul {
-    flex-direction: column;
-    width: 100%;
-    align-items: flex-start;
-    background-color: var(--header-bg);
-    padding: 10px;
-  }
-
-  .search-bar {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* FOOTER */
+/* Pied de page */
 footer {
-  background-color: var(--footer-bg);
-  color: white;
-  padding: 20px;
-  text-align: center;
+    background-color: #1e1e1e;
+    color: white;
+    padding: 20px;
+    text-align: center;
 }
 
 footer ul {
-  list-style: none;
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+    list-style: none;
+    margin-top: 10px;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
 footer ul li a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
-/* HERO */
+/* Section Hero */
 .hero {
-  background: url('Cover/NAMBIYé SMPL.jpg');
-  height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: white;
-  position: relative;
+    background: url('Cover/NAMBIYé SMPL.jpg') no-repeat center center/cover;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.hero-content {
+    z-index: 2;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
+    font-size: 3rem;
+    margin-bottom: 10px;
 }
 
 .hero p {
-  font-size: 1.2rem;
-  margin: 20px;
+    font-size: 1.2rem;
+    margin: 20px;
 }
 
 .cta-btn {
-  padding: 15px 30px;
-  background-color: var(--primary-color);
-  border: none;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 50px;
-  cursor: pointer;
+    padding: 15px 30px;
+    background-color: var(--accent);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 .cta-btn:hover {
-  background-color: var(--primary-dark);
+    background-color: var(--accent-dark);
 }
 
-/* BOUTON MODE SOMBRE/LUMINEUX */
-.theme-toggle {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 50px;
-  padding: 10px 20px;
-  cursor: pointer;
-  z-index: 999;
+/* Lecteurs audio et vidéo */
+audio, video {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    display: block;
+    border-radius: 12px;
+    background-color: var(--card-bg);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.theme-toggle:hover {
-  background-color: var(--primary-dark);
+audio::-webkit-media-controls-panel,
+video::-webkit-media-controls-panel {
+    background-color: var(--accent);
+    border-radius: 12px;
 }
 
-/* RESPONSIVE GRILLES POUR MUSIQUE, PLAYLISTS, etc. */
-.music-list,
-.albums-list,
-.artist-list,
-.playlist-list,
-.genre-playlist-list,
-.video-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+audio::-webkit-media-controls-play-button,
+video::-webkit-media-controls-play-button {
+    background-color: var(--accent-dark);
+    border-radius: 50%;
 }
 
-.music-item,
-.albums-item,
-.artist-item,
-.playlist-item,
-.genre-playlist-item,
-.video-card {
-  background-color: var(--primary-color);
-  padding: 15px;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 250px;
-  text-align: center;
-  color: white;
+audio:hover, video:hover {
+    transform: scale(1.01);
+    transition: transform 0.2s ease-in-out;
 }
 
-.music-item:hover,
-.albums-item:hover,
-.artist-item:hover,
-.playlist-item:hover,
-.genre-playlist-item:hover,
-.video-card:hover {
-  background-color: var(--primary-dark);
-}
-
-@media (min-width: 600px) {
-  .music-item,
-  .albums-item,
-  .artist-item,
-  .playlist-item,
-  .genre-playlist-item,
-  .video-card {
-    width: 45%;
-  }
-}
-
-@media (min-width: 992px) {
-  .music-item,
-  .albums-item,
-  .artist-item,
-  .playlist-item,
-  .genre-playlist-item,
-  .video-card {
-    width: 22%;
-  }
+.media-description {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text);
+    margin-top: 5px;
 }
