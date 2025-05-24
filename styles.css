@@ -1,8 +1,15 @@
 /*Rénitialisation des styles par défaut*/
-.{
+body{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+@media (max-width: 500px) {
+  body {
+    width: 90%;
+    padding: 15px;
+  }
 }
 
 body{
@@ -383,6 +390,7 @@ video:hover{
 	padding: 40px 20px;
 	background-color: white;
 	text-align: center;
+}
 
 .playlists-section h1{
 	font-size: 2.5rem;
