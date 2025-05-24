@@ -492,3 +492,51 @@ footer ul {
     max-width: 90%;
   }
 }
+
+/* Style du burger (caché par défaut sur grand écran) */
+.burger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Menu caché sur mobile */
+#nav-menu {
+  display: flex;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+  }
+
+  #nav-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    width: 100%;
+    padding: 10px 0;
+  }
+
+  #nav-menu.active {
+    display: flex;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .search-bar {
+    flex-direction: column;
+    width: 100%;
+  }
+}
