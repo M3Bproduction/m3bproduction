@@ -1,184 +1,392 @@
-
-/* Réinitialisation des styles par défaut */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/*Rénitialisation des styles par défaut*/
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-:root {
-    --bg: #f4f4f4;
-    --text: #333;
-    --accent: #00c0ff;
-    --accent-dark: #009bb2;
-    --card-bg: white;
+body{
+	font-family: 'Arial', sans-serif;
+	line-height: 1.6;
+	background-color: #f4f4f4;
+	color: #333;
 }
 
-/* Mode sombre */
-.dark {
-    --bg: #121212;
-    --text: #f5f5f5;
-    --accent: #1db954;
-    --accent-dark: #168f3e;
-    --card-bg: #1e1e1e;
+/*En-tête*/
+header{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #1e1e1e;
+	padding: 20px;
+	color: white;
 }
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: var(--bg);
-    color: var(--text);
+.logo{
+	display: flex;
+	align-items: center;
 }
 
-/* En-tête */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e1e1e;
-    padding: 20px;
-    color: white;
+header .logo img{
+	width: 3rem;
 }
 
-header .logo img {
-    width: 120px;
+header nav ul{
+	display: flex;
+	list-style: none;
 }
 
-header nav ul {
-    display: flex;
-    list-style: none;
+header nav ul li{
+	margin: 0 15px;
 }
 
-header nav ul li {
-    margin: 0 15px;
+header nav ul li a{
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
 }
 
-header nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+.search-bar{
+	display: flex;
+	align-items: center;
+	text-align: center;
+	margin: 1rem;
+	padding-right: 1rem;
 }
 
-.search-bar {
-    display: flex;
-    align-items: center;
+.search-bar input{
+	padding: 10px;
+	border: none;
+	border-radius: 20px;
+	margin-right: 10px;
+	width: 200px;
 }
 
-.search-bar input {
-    padding: 10px;
-    border: none;
-    border-radius: 20px;
-    margin-right: 10px;
-    width: 200px;
+.search-bar button{
+	padding: 10px 15px;
+	background-color: #00c0ff;
+	border: none;
+	border-radius: 20px;
+	color: white;
+	cursor: pointer;
 }
 
-.search-bar button {
-    padding: 10px 15px;
-    background-color: var(--accent);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    cursor: pointer;
+.search-bar button:hover{
+	background-color: #009bb2;
 }
 
-.search-bar button:hover {
-    background-color: var(--accent-dark);
+/*Pied de page*/
+footer{
+	background-color: #1e1e1e;
+	color: white;
+	padding: 20px;
+	text-align: center;
 }
 
-/* Pied de page */
-footer {
-    background-color: #1e1e1e;
-    color: white;
-    padding: 20px;
+footer ul{
+	list-style: none;
+	margin-top: 10px;
+}
+
+footer ul li{
+	display: inline;
+	margin: 0 15px;
+}
+
+footer ul li a{
+	text-decoration: none;
+	color: white;
+}
+
+/*Section Hero*/
+.hero{
+	background-image: url('Cover/NAMBIYé SMPL.jpg');
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	color: white;
+	position: relative;
+}
+
+.hero-content{
+	z-index: 2;
+}
+
+.hero h1{
+	font-size: 3rem;
+	margin-bottom: 10px;
+}
+
+.hero p{
+	font-size: 1.2rem;
+	margin: 20px;
+}
+
+.cta-btn{
+	padding: 15px 30px;
+	background-color: #00c0ff;
+	border: none;
+	color: white;
+	font-size: 1.2rem;
+	border-radius: 50px;
+	cursor: pointer;
+}
+
+.cta-btn:hover{
+	background-color: #009bb2;
+}
+
+/*Section Musique*/
+.music-section{
+	padding: 40px 20px;
+	background-color: white;
+	text-align: center;
+}
+
+.music-section h2{
+	font-size: 2rem;
+	margin-bottom: 3px;
+}
+
+.music-list{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.music-item{
+	background-color: #00c0ff;
+	padding: 15px;
+	border-radius: 10px;
+	text-align: center;
+	width: 250px;
+}
+
+.music-item:hover{
+	background-color: #000bff;
+}
+
+.music-item img{
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 15px;
+	cursor: pointer;
+}
+
+.music-item h3{
+	font-size: 1.2rem;
+	margin-bottom: 5px;
+	color: white;
+}
+
+.music-item p{
+	font-size: 1rem;
+	color: #fff;
+}
+
+.music-item audio{
+	width: 100%;
+}
+
+/*Albums Recommandés*/
+.recommended-albums h2{
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+.albums-list{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.albums-item{
+	background-color: #00c0ff;
+	padding: 15px;
+	border-radius: 10px;
+	text-align: center;
+	width: 150px;
+}
+
+.albums-item:hover{
+	background-color: #000bff;
+}
+
+.albums-item img{
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+
+.albums-item h3{
+	font-size: 1.2rem;
+	color: white;
+}
+
+.albums-item p{
+	font-size: 1rem;
+	color: white;
+}
+
+/*Artistes à découvvrir*/
+.featured-artists h2{
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+.artist-list{
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap;
+}
+
+.artist-item{
+	background-color: #00c0ff;
+	padding: 15px;
+	border-radius: 10px;
+	text-align: center;
+	width: 150px;
+}
+
+.artist-item:hover{
+	background-color: #000bff;
+}
+
+.artist-item img{
+	width: 100%;
+	border-radius: 10px;
+	margin-bottom: 15px;
+}
+
+.artist-item h3{
+	font-size: 1.2rem;
+	color: white;
+}
+
+/*Section Clips Vidéo*/
+.video-gallery{
+	padding: 40px 20px;
+	text-align: center;
+}
+
+.video-gallery h1{
+	font-size: 2.5rem;
+	margin-bottom: 20px;
+}
+
+.video-gallery p{
+	font-size: 1.2rem;
+	margin-bottom: 40px;
+}
+
+/*Grille des vidéos*/
+.video-grid{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	gap: 20px;
+}
+
+.video-card{
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	width: 22%;
+	text-align: center;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease;
+}
+
+.video-card:hover{
+	transform: translateY(-10px);
+}
+
+video{
+	width: 80%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 5px;
+	padding: 10px 20px;
+	background-color: #00c0ff;
+	color: white;
+	border: none;
+	transition: backgroud-color 0.3s ease;
+}
+
+video:hover{
+	background-color: #009bb2;
+}
+
+.video-card h3{
+	font-size: 1.5rem;
+	margin: 15px 0;
+}
+
+
+.track p{
+	margin-bottom: 1px;
+	margin: 2px;
+	margin-right: -2px;
+}
+
+/* Section À propos */
+.about-section {
+    padding: 40px 20px;
+    background-color: white;
     text-align: center;
 }
 
-footer ul {
-    list-style: none;
-    margin-top: 10px;
+.about-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
-footer ul li {
-    display: inline;
-    margin: 0 15px;
+.about-section p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-footer ul li a {
-    text-decoration: none;
-    color: white;
+.album{
+	margin: 0;
+	padding: 2rem;
+	display: flex;
+	justify-content: center;
+	background-color: #1e1eaa;
 }
 
-/* Section Hero */
-.hero {
-    background: url('Cover/NAMBIYé SMPL.jpg') no-repeat center center/cover;
-    height: 400px;
-    display: flex;
-    justify-content: center;
+.track{
+	margin: 0;
+	padding: 0;
+}
+
+/* ✅ Media queries pour mobile */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
     align-items: center;
-    text-align: center;
-    color: white;
-    position: relative;
-}
+  }
 
-.hero-content {
-    z-index: 2;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin: 20px;
-}
-
-.cta-btn {
-    padding: 15px 30px;
-    background-color: var(--accent);
-    border: none;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-.cta-btn:hover {
-    background-color: var(--accent-dark);
-}
-
-/* Lecteurs audio et vidéo */
-audio, video {
+  .search-bar {
+    flex-direction: column;
     width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-    display: block;
-    border-radius: 12px;
-    background-color: var(--card-bg);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
+  }
 
-audio::-webkit-media-controls-panel,
-video::-webkit-media-controls-panel {
-    background-color: var(--accent);
-    border-radius: 12px;
-}
+  .search-bar input {
+    width: 100%;
+  }
 
-audio::-webkit-media-controls-play-button,
-video::-webkit-media-controls-play-button {
-    background-color: var(--accent-dark);
-    border-radius: 50%;
-}
+  .hero h1 {
+    font-size: 22px;
+  }
 
-audio:hover, video:hover {
-    transform: scale(1.01);
-    transition: transform 0.2s ease-in-out;
-}
-
-.media-description {
-    text-align: center;
-    font-size: 1rem;
-    color: var(--text);
-    margin-top: 5px;
+  .music-item {
+    max-width: 90%;
+  }
 }
