@@ -389,4 +389,12 @@ video:hover{
   .music-item {
     max-width: 90%;
   }
+
+  .video-grid{
+  	display: inline;
+  }
+
+  .video-card{
+  	width: 100%;
+  }
 }
