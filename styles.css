@@ -100,7 +100,7 @@ footer ul li a{
 
 /*Section Hero*/
 .hero{
-	background-image: url('Cover/NAMBIYé SMPL.jpg');
+	background-color: #222222;
 	height: 400px;
 	display: flex;
 	justify-content: center;
@@ -387,7 +387,8 @@ video:hover{
   }
 
   .music-item {
-    max-width: 90%;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
   .video-grid{
@@ -396,5 +397,9 @@ video:hover{
 
   .video-card{
   	width: 100%;
+  }
+
+  .music-list{
+  	display: inline;
   }
 }
