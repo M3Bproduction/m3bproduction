@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tommy 10 - Nambiyé</title>
   <link rel="stylesheet" type="text/css" href="playlist.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 <body>
   <div class="audio-player" class="mini">
@@ -211,17 +212,26 @@ function updateActiveTrack() {
 // Bouton pour télécharger tous les morceaux
 const downloadAllBtn = document.getElementById("downloadAllBtn");
 
-downloadAllBtn.addEventListener("click", () => {
-  playlist.forEach(track => {
-    const link = document.createElement("a");
-    link.href = track.src;
-    link.download = track.src.split("/").pop(); // nom du fichier
-    link.style.display = "none";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
+downloadAllBtn.addEventListener("click", async () => {
+  const zip = new JSZip();
+
+  for (const track of playlist) {
+    try {
+      const response = await fetch(track.src);
+      const blob = await response.blob();
+      zip.file(track.src.split("/").pop(), blob);
+    } catch (err) {
+      console.error("Erreur de téléchargement :", track.src, err);
+    }
+  }
+
+  const zipBlob = await zip.generateAsync({ type: "blob" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(zipBlob);
+  link.download = "Tommy10-Nambiyé.zip";
+  link.click();
 });
+
 
   // Auto load le premier morceau
   renderPlaylist();
