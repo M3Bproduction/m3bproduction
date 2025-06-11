@@ -1,64 +1,238 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Album-Nambiyé</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tommy 10 - Nambiyé</title>
+  <link rel="stylesheet" type="text/css" href="playlist.css">
 </head>
-<body class="album">
-	<div class="track">
-		<div class="music-item" style="background: url('Cover/NAMBIYé SMPL.jpg') no-repeat center center/cover; width: 150%;">
-			<img src="Cover/Nambiye.png" alt="Nambiye">
-			<p>Tommy 10</p>
-			<h3>Nambiyé</h3>
+<body>
+  <div class="audio-player" class="mini">
+    <div class="track-info">
+      <img id="coverImage" src="" alt="Pochette" class="cover">
+      <div class="meta">
+        <h3 id="trackTitle">Titre</h3>
+        <p id="trackArtist">Artiste</p>
+        <p id="trackAlbum">Album</p>
+      </div>
+      <audio id="myAudio"></audio>
+    </div>
+  
+  <div class="controls">
+    <button id="prevBtn">⏮️</button>
+    <button id="playBtn">▶️</button>
+    <button id="nextBtn">⏭️</button>
+    <button id="loopBtn">🔁</button>
+    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" class="volume">
+  </div>
 
-			<p>1 . Nambiyé</p>
-			<audio id="audio1" controls>
-				<source src="Nambiyé/1 - Tommy 10 - Nambiyé.mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
+  <div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
 
-			<p>2 . Yenda (feat J-ga Frees)</p>
-			<audio id="audio2" controls>
-				<source src="Nambiyé/2 - Tommy 10 - Yenda(feat J-ga Frees).mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
+  <div class="time-display">
+    <span id="currentTime">0:00</span>
+    <span id="totalTime">0:00</span>
+  </div>
 
-			<p>3 . Ndjadaza (feat Gueriya)</p>
-			<audio id="audio3" controls>
-				<source src="Nambiyé/3 - Tommy 10 - Ndjadaza(feat Gueriya).mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
+  <button class="mode-toggle" id="toggleMode">🌓 Mode Sombre</button>
+  <button id="toggleMini" class="toggle-mini">⬇️ Réduire</button>
+</div>
+<div class="playlist" id="playlist"></div>
 
-			<p>4 . Ndopvi (feat Benzaher)</p>
-			<audio id="audio4" controls>
-				<source src="Nambiyé/4 - Tommy 10 - Ndopvi(feat Benzaher).mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
+<script>
+  const audio = document.getElementById("myAudio");
+  const playBtn = document.getElementById("playBtn");
+  const progressBar = document.getElementById("progressBar");
+  const progressContainer = document.querySelector(".progress-container");
+  const volumeControl = document.getElementById("volumeControl");
+  const currentTimeEl = document.getElementById("currentTime");
+  const totalTimeEl = document.getElementById("totalTime");
+  const loopBtn = document.getElementById("loopBtn");
+  let playMode = "normal"; // normal, repeat, shuffle, stop
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const toggleModeBtn = document.getElementById("toggleMode");
 
-			<p>5 . Mi Ntsoumdrani</p>
-			<audio id="audio5" controls>
-				<source src="Nambiyé/5 - Tommy 10 - Mi Ntsoumdrani.mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
+  // Playlist (exemple avec 2 musiques)
+  const playlist = [
+    {src: "Nambiyé/1 - Tommy 10 - Nambiyé.mp3",title: "1. Nambiyé",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"},
+    {src: "Nambiyé/2 - Tommy 10 - Yenda(feat J-ga Frees).mp3",title: "2. Yenda (feat J-ga Frees)",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"},
+    {src: "Nambiyé/3 - Tommy 10 - Ndjadaza(feat Gueriya).mp3",title: "3. Ndjadaza (feat Gueriya)",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"},
+    {src: "Nambiyé/4 - Tommy 10 - Ndopvi(feat Benzaher).mp3",title: "4. Ndopvi (feat Benzaher)",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"},
+    {src: "Nambiyé/5 - Tommy 10 - Mi Ntsoumdrani.mp3",title: "5. Mi Ntsoumdrani",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"},
+    {src: "Nambiyé/6 - Tommy 10 - Freestyle 1(Ndo wussiku nazaloi).mp3",title: "6. Freestyle 1 (Ndo wussiku nazaloi)",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"},
+    {src: "Nambiyé/7 - Tommy 10 - Outro.mp3",title: "7. Outro",artist: "Tommy 10",album: "Nambiyé",cover: "cover/Nambiye.png"}
+];
 
-			<p>6 . Freestyle 1 (Ndo Wussiku Nazaloi)</p>
-			<audio id="audio6" controls>
-				<source src="Nambiyé/6 - Tommy 10 - Freestyle 1(Ndo wussiku nazaloi).mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
+  let currentTrack = 0;
 
-			<p>7 . Outro</p>
-			<audio id="audio7" controls>
-				<source src="Nambiyé/7 - Tommy 10 - Outro.mp3" type="audio/mpeg">
-					Votre navigateur ne prend pas en charge l'element audio.
-			</audio>
-		</div>
+  function loadTrack(index) {
+  const track = playlist[index];
+  audio.src = track.src;
+  document.getElementById("trackTitle").textContent = track.title;
+  document.getElementById("trackArtist").textContent = track.artist;
+  document.getElementById("trackAlbum").textContent = track.album;
+  document.getElementById("coverImage").src = track.cover;
+  audio.load();
+  audio.play();
+  playBtn.textContent = "⏸";
+}
 
-		<script>
-			const audioElements=[document.getElementByld('audio1'),document.getElementByld('audio2'),document.getElementByld('audio3'),document.getElementByld('audio4'),document.getElementByld('audio5'),document.getElementByld('audio6'),document.getElementByld('audio7')]
-		</script>
-	</div>
+  // Formatage du temps
+  function formatTime(seconds) {
+    const min = Math.floor(seconds / 60);
+    const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${min}:${sec}`;
+  }
+
+  playBtn.addEventListener("click", () => {
+    if (audio.paused) {
+      audio.play();
+      playBtn.textContent = "⏸";
+    } else {
+      audio.pause();
+      playBtn.textContent = "▶️";
+    }
+  });
+
+  // Barre de progression
+  audio.addEventListener("timeupdate", () => {
+    const progressPercent = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = `${progressPercent}%`;
+    currentTimeEl.textContent = formatTime(audio.currentTime);
+    totalTimeEl.textContent = formatTime(audio.duration);
+  });
+
+  progressContainer.addEventListener("click", (e) => {
+    const width = progressContainer.clientWidth;
+    const clickX = e.offsetX;
+    const duration = audio.duration;
+    audio.currentTime = (clickX / width) * duration;
+  });
+
+  // Volume
+  volumeControl.addEventListener("input", () => {
+    audio.volume = volumeControl.value;
+  });
+
+  // Loop
+  loopBtn.addEventListener("click", () => {
+  if (playMode === "normal") {
+    playMode = "repeat";
+    loopBtn.textContent = "🔂";
+  } else if (playMode === "repeat") {
+    playMode = "shuffle";
+    loopBtn.textContent = "🔀";
+  } else if (playMode === "shuffle") {
+    playMode = "stop";
+    loopBtn.textContent = "⏹️";
+  } else {
+    playMode = "normal";
+    loopBtn.textContent = "🔁";
+  }
+});
+
+  // Playlist navigation
+  prevBtn.addEventListener("click", () => {
+    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+    loadTrack(currentTrack);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    loadTrack(currentTrack);
+  });
+
+  // Auto-play next
+  audio.addEventListener("ended", () => {
+  if (playMode === "repeat") {
+    audio.currentTime = 0;
+    audio.play();
+  } else if (playMode === "shuffle") {
+    let nextTrack;
+    do {
+      nextTrack = Math.floor(Math.random() * playlist.length);
+    } while (nextTrack === currentTrack && playlist.length > 1);
+    currentTrack = nextTrack;
+    loadTrack(currentTrack);
+  } else if (playMode === "normal") {
+    if (currentTrack < playlist.length - 1) {
+      currentTrack++;
+      loadTrack(currentTrack);
+    }
+  }
+  // Si mode = stop → ne rien faire
+});
+
+  // Mode sombre
+  toggleModeBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+  });
+
+  // Chargement initial
+  audio.addEventListener("loadedmetadata", () => {
+    totalTimeEl.textContent = formatTime(audio.duration);
+  });
+
+  const playlistContainer = document.getElementById("playlist");
+
+// Générer les items
+function renderPlaylist() {
+  playlistContainer.innerHTML = "";
+
+  playlist.forEach((track, index) => {
+    const item = document.createElement("div");
+    item.classList.add("playlist-item");
+    item.textContent = `${track.title} - ${track.artist}`;
+
+    if (index === currentTrack) {
+      item.classList.add("active");
+    }
+
+    item.addEventListener("click", () => {
+      currentTrack = index;
+      loadTrack(currentTrack);
+      updateActiveTrack();
+    });
+
+    playlistContainer.appendChild(item);
+  });
+}
+
+// Mettre à jour le style actif
+function updateActiveTrack() {
+  const items = document.querySelectorAll(".playlist-item");
+  items.forEach((item, index) => {
+    item.classList.toggle("active", index === currentTrack);
+  });
+}
+
+const toggleMiniBtn = document.getElementById("toggleMini");
+
+toggleMiniBtn.addEventListener("click", () => {
+  document.querySelector(".audio-player").classList.toggle("mini");
+  toggleMiniBtn.textContent = document.querySelector(".audio-player").classList.contains("mini")
+    ? "⬆️ Agrandir"
+    : "⬇️ Réduire";
+});
+
+  // Auto load le premier morceau
+  renderPlaylist();
+  loadTrack(currentTrack);
+
+  function loadTrack(index) {
+  const track = playlist[index];
+  audio.src = track.src;
+  document.getElementById("trackTitle").textContent = track.title;
+  document.getElementById("trackArtist").textContent = track.artist;
+  document.getElementById("trackAlbum").textContent = track.album;
+  document.getElementById("coverImage").src = track.cover;
+  audio.load();
+  audio.play();
+  playBtn.textContent = "⏸";
+  updateActiveTrack(); // <<< AJOUT
+}
+</script>
 </body>
 </html>
