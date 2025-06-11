@@ -27,7 +27,20 @@ header{
 	align-items: center;
 }
 
+.logo-m{
+	background-color: #00c0ff;
+	color: white;
+	display: flex;
+	align-items: center;
+	padding: 1rem;
+	margin: 0;
+}
+
 header .logo img{
+	width: 3rem;
+}
+
+.logo-m img{
 	width: 3rem;
 }
 
@@ -52,6 +65,7 @@ header nav ul li a{
 	text-align: center;
 	margin: 1rem;
 	padding-right: 1rem;
+	margin-top: 3rem;
 }
 
 .search-bar input{
@@ -75,32 +89,9 @@ header nav ul li a{
 	background-color: #009bb2;
 }
 
-/*Pied de page*/
-footer{
-	background-color: #1e1e1e;
-	color: white;
-	padding: 20px;
-	text-align: center;
-}
-
-footer ul{
-	list-style: none;
-	margin-top: 10px;
-}
-
-footer ul li{
-	display: inline;
-	margin: 0 15px;
-}
-
-footer ul li a{
-	text-decoration: none;
-	color: white;
-}
-
 /*Section Hero*/
 .hero{
-	background-color: #222222;
+	background: linear-gradient(to bottom, #00c0ff, #eeeeee);
 	height: 400px;
 	display: flex;
 	justify-content: center;
@@ -366,6 +357,57 @@ video:hover{
 	padding: 0;
 }
 
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #00c0ff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+    z-index: 9999;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-link .material-icons {
+    font-size: 22px;
+    margin-bottom: 2px;
+}
+
+/* Optionnel : effet actif */
+.nav-link:hover {
+    opacity: 0.85;
+}
+
+/* Header desktop */
+.top-nav {
+    display: none; /* Par défaut, masqué */
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #00c0ff;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
 /* ✅ Media queries pour mobile */
 @media (max-width: 600px) {
   nav ul {
@@ -374,12 +416,12 @@ video:hover{
   }
 
   .search-bar {
-    flex-direction: column;
-    width: 100%;
+    display: flex;
+    width: 90%;
   }
 
   .search-bar input {
-    width: 100%;
+    width: 70%;
   }
 
   .hero h1 {
@@ -403,4 +445,44 @@ video:hover{
   .music-list{
   	display: inline;
   }
+
+  .top-nav{
+  	display: none;
+  }
+}
+
+/* Afficher sur écran large uniquement */
+@media (min-width: 768px) {
+	.logo-m{
+		display: none;
+	}
+    .top-nav {
+        display: flex;
+    }
+
+    .bottom-nav {
+        display: none;
+    }
+
+    body {
+        padding-top: 60px; /* éviter que le contenu soit caché sous le header */
+    }
+
+    .features {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .product-detail-card {
+        flex-direction: row;
+    }
+
+    .product-detail-img {
+        width: 50%;
+    }
+
+    .product-detail-info {
+        width: 50%;
+        padding-left: 20px;
+    }
 }
