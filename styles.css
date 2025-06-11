@@ -397,6 +397,7 @@ video:hover{
 
   .video-card{
   	width: 100%;
+  	margin-bottom: 1rem;
   }
 
   .music-list{
