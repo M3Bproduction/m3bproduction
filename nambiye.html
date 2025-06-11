@@ -36,7 +36,7 @@
   </div>
 
   <button class="mode-toggle" id="toggleMode">🌓 Mode Sombre</button>
-  <button id="toggleMini" class="toggle-mini">⬇️ Réduire</button>
+<button id="downloadAllBtn" class="download-all">📥 Télécharger</button>
 </div>
 <div class="playlist" id="playlist"></div>
 
@@ -208,13 +208,19 @@ function updateActiveTrack() {
   });
 }
 
-const toggleMiniBtn = document.getElementById("toggleMini");
+// Bouton pour télécharger tous les morceaux
+const downloadAllBtn = document.getElementById("downloadAllBtn");
 
-toggleMiniBtn.addEventListener("click", () => {
-  document.querySelector(".audio-player").classList.toggle("mini");
-  toggleMiniBtn.textContent = document.querySelector(".audio-player").classList.contains("mini")
-    ? "⬆️ Agrandir"
-    : "⬇️ Réduire";
+downloadAllBtn.addEventListener("click", () => {
+  playlist.forEach(track => {
+    const link = document.createElement("a");
+    link.href = track.src;
+    link.download = track.src.split("/").pop(); // nom du fichier
+    link.style.display = "none";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
 });
 
   // Auto load le premier morceau
