@@ -1,245 +1,290 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tommy 10 - Nambiyé</title>
-  <link rel="stylesheet" type="text/css" href="playlist.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-</head>
-<body>
-  <div class="audio-player" class="mini">
-    <div class="track-info">
-      <img id="coverImage" src="" alt="Pochette" class="cover">
-      <div class="meta">
-        <h3 id="trackTitle">Titre</h3>
-        <p id="trackArtist">Artiste</p>
-        <p id="trackAlbum">Album</p>
-      </div>
-      <audio id="myAudio"></audio>
-    </div>
-  
-  <div class="controls">
-    <button id="prevBtn">⏮️</button>
-    <button id="playBtn">▶️</button>
-    <button id="nextBtn">⏭️</button>
-    <button id="loopBtn">🔁</button>
-    <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" class="volume">
-  </div>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Tommy 10 - Nambiyé</title>
+		<link rel="stylesheet" type="text/css" href="playlist.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
 
-  <div class="progress-container">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+	<body>
+		<header class="top-nav">
+			<div class="logo">
+				<img src="M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
+				<h2>M3 Music</h2>
+			</div>
+			<nav class="main-nav top-nav-links">
+				<ul>
+			    	<li><a href="index.html">Accueil</a></li>
+				    <li><a href="clips.html">Clips</a></li>
+				    <li><a href="albums.html">Albums</a></li>
+				    <li><a href="a-propos.html">À propos</a></li>
+				  </ul>
+			</nav>
+		</header>
+		<div class="logo-m">
+			<img src="M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
+			<h2>M3 Music</h2>
+		</div>
 
-  <div class="time-display">
-    <span id="currentTime">0:00</span>
-    <span id="totalTime">0:00</span>
-  </div>
+		<main>
+	  		<div class="audio-player" class="mini">
+	    		<div class="track-info">
+	      			<img id="coverImage" src="" alt="Pochette" class="cover">
+	      			<div class="meta">
+	        			<h3 id="trackTitle">Titre</h3>
+	        			<p id="trackArtist">Artiste</p>
+	        			<p id="trackAlbum">Album</p>
+	      			</div>
+	      			<audio id="myAudio"></audio>
+	    		</div>
+	  
+	  			<div class="controls">
+	    			<button id="prevBtn">⏮️</button>
+	    			<button id="playBtn">▶️</button>
+	    			<button id="nextBtn">⏭️</button>
+	    			<button id="loopBtn">🔁</button>
+	    			<input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" class="volume">
+	  			</div>
 
-  <button class="mode-toggle" id="toggleMode">🌓 Mode Sombre</button>
-<button id="downloadAllBtn" class="download-all">📥 Télécharger</button>
-</div>
-<div class="playlist" id="playlist"></div>
+	  			<div class="progress-container">
+	    			<div class="progress-bar" id="progressBar"></div>
+	  			</div>
 
-<script>
-  const audio = document.getElementById("myAudio");
-  const playBtn = document.getElementById("playBtn");
-  const progressBar = document.getElementById("progressBar");
-  const progressContainer = document.querySelector(".progress-container");
-  const volumeControl = document.getElementById("volumeControl");
-  const currentTimeEl = document.getElementById("currentTime");
-  const totalTimeEl = document.getElementById("totalTime");
-  const loopBtn = document.getElementById("loopBtn");
-  let playMode = "normal"; // normal, repeat, shuffle, stop
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const toggleModeBtn = document.getElementById("toggleMode");
+	  			<div class="time-display">
+	    			<span id="currentTime">0:00</span>
+	    			<span id="totalTime">0:00</span>
+	  			</div>
 
-  // Playlist (exemple avec 2 musiques)
-  const playlist = [
-    {src: "Nambiyé/1 - Tommy 10 - Nambiyé.mp3",title: "1. Nambiyé",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
-    {src: "Nambiyé/2 - Tommy 10 - Yenda(feat J-ga Frees).mp3",title: "2. Yenda (feat J-ga Frees)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
-    {src: "Nambiyé/3 - Tommy 10 - Ndjadaza(feat Gueriya).mp3",title: "3. Ndjadaza (feat Gueriya)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
-    {src: "Nambiyé/4 - Tommy 10 - Ndopvi(feat Benzaher).mp3",title: "4. Ndopvi (feat Benzaher)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
-    {src: "Nambiyé/5 - Tommy 10 - Mi Ntsoumdrani.mp3",title: "5. Mi Ntsoumdrani",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
-    {src: "Nambiyé/6 - Tommy 10 - Freestyle 1(Ndo wussiku nazaloi).mp3",title: "6. Freestyle 1 (Ndo wussiku nazaloi)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
-    {src: "Nambiyé/7 - Tommy 10 - Outro.mp3",title: "7. Outro",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"}
-];
+	  			<button class="mode-toggle" id="toggleMode">🌓 Mode Sombre</button>
+				<button id="downloadAllBtn" class="download-all">📥 Télécharger</button>
+			</div>
+			<div class="playlist" id="playlist"></div>
+		</main>
 
-  let currentTrack = 0;
+		<footer>
+			<!-- Barre de navigation fixe en bas -->
+			<nav class="bottom-nav">
+				<a href="index.html" class="nav-link">
+					<span class="material-icons">home</span>
+				    <span>Accueil</span>
+				</a>
+				<a href="clips.html" class="nav-link">
+				    <span class="material-icons">movie</span>
+				    <span>Clips</span>
+				</a>
+				<a href="albums.html" class="nav-link">
+				    <span class="material-icons">album</span>
+				    <span>Albums</span>
+				</a>
+				<a href="a-propos.html" class="nav-link">
+				    <span class="material-icons">info</span>
+				    <span>À propos</span>
+				</a>
+			</nav>
+		</footer>
 
-  function loadTrack(index) {
-  const track = playlist[index];
-  audio.src = track.src;
-  document.getElementById("trackTitle").textContent = track.title;
-  document.getElementById("trackArtist").textContent = track.artist;
-  document.getElementById("trackAlbum").textContent = track.album;
-  document.getElementById("coverImage").src = track.cover;
-  audio.load();
-  audio.play();
-  playBtn.textContent = "⏸";
-}
+		<script>
+		  const audio = document.getElementById("myAudio");
+		  const playBtn = document.getElementById("playBtn");
+		  const progressBar = document.getElementById("progressBar");
+		  const progressContainer = document.querySelector(".progress-container");
+		  const volumeControl = document.getElementById("volumeControl");
+		  const currentTimeEl = document.getElementById("currentTime");
+		  const totalTimeEl = document.getElementById("totalTime");
+		  const loopBtn = document.getElementById("loopBtn");
+		  let playMode = "normal"; // normal, repeat, shuffle, stop
+		  const prevBtn = document.getElementById("prevBtn");
+		  const nextBtn = document.getElementById("nextBtn");
+		  const toggleModeBtn = document.getElementById("toggleMode");
 
-  // Formatage du temps
-  function formatTime(seconds) {
-    const min = Math.floor(seconds / 60);
-    const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
-    return `${min}:${sec}`;
-  }
+		  // Playlist
+		  const playlist = [
+		    {src: "Nambiyé/1 - Tommy 10 - Nambiyé.mp3",title: "1. Nambiyé",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
+		    {src: "Nambiyé/2 - Tommy 10 - Yenda(feat J-ga Frees).mp3",title: "2. Yenda (feat J-ga Frees)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
+		    {src: "Nambiyé/3 - Tommy 10 - Ndjadaza(feat Gueriya).mp3",title: "3. Ndjadaza (feat Gueriya)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
+		    {src: "Nambiyé/4 - Tommy 10 - Ndopvi(feat Benzaher).mp3",title: "4. Ndopvi (feat Benzaher)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
+		    {src: "Nambiyé/5 - Tommy 10 - Mi Ntsoumdrani.mp3",title: "5. Mi Ntsoumdrani",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
+		    {src: "Nambiyé/6 - Tommy 10 - Freestyle 1(Ndo wussiku nazaloi).mp3",title: "6. Freestyle 1 (Ndo wussiku nazaloi)",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"},
+		    {src: "Nambiyé/7 - Tommy 10 - Outro.mp3",title: "7. Outro",artist: "Tommy 10",album: "Nambiyé",cover: "Cover/Nambiye.webp"}
+			];
 
-  playBtn.addEventListener("click", () => {
-    if (audio.paused) {
-      audio.play();
-      playBtn.textContent = "⏸";
-    } else {
-      audio.pause();
-      playBtn.textContent = "▶️";
-    }
-  });
+		  let currentTrack = 0;
 
-  // Barre de progression
-  audio.addEventListener("timeupdate", () => {
-    const progressPercent = (audio.currentTime / audio.duration) * 100;
-    progressBar.style.width = `${progressPercent}%`;
-    currentTimeEl.textContent = formatTime(audio.currentTime);
-    totalTimeEl.textContent = formatTime(audio.duration);
-  });
+		  function loadTrack(index) {
+		  const track = playlist[index];
+		  audio.src = track.src;
+		  document.getElementById("trackTitle").textContent = track.title;
+		  document.getElementById("trackArtist").textContent = track.artist;
+		  document.getElementById("trackAlbum").textContent = track.album;
+		  document.getElementById("coverImage").src = track.cover;
+		  audio.load();
+		  audio.play();
+		  playBtn.textContent = "⏸";
+		  }
 
-  progressContainer.addEventListener("click", (e) => {
-    const width = progressContainer.clientWidth;
-    const clickX = e.offsetX;
-    const duration = audio.duration;
-    audio.currentTime = (clickX / width) * duration;
-  });
+		  // Formatage du temps
+		  function formatTime(seconds) {
+		    const min = Math.floor(seconds / 60);
+		    const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
+		    return `${min}:${sec}`;
+		  }
 
-  // Volume
-  volumeControl.addEventListener("input", () => {
-    audio.volume = volumeControl.value;
-  });
+		  playBtn.addEventListener("click", () => {
+		    if (audio.paused) {
+		      audio.play();
+		      playBtn.textContent = "⏸";
+		    } else {
+		      audio.pause();
+		      playBtn.textContent = "▶️";
+		    }
+		  });
 
-  // Loop
-  loopBtn.addEventListener("click", () => {
-  if (playMode === "normal") {
-    playMode = "repeat";
-    loopBtn.textContent = "🔂";
-  } else if (playMode === "repeat") {
-    playMode = "shuffle";
-    loopBtn.textContent = "🔀";
-  } else if (playMode === "shuffle") {
-    playMode = "stop";
-    loopBtn.textContent = "⏹️";
-  } else {
-    playMode = "normal";
-    loopBtn.textContent = "🔁";
-  }
-});
+		  // Barre de progression
+		  audio.addEventListener("timeupdate", () => {
+		    const progressPercent = (audio.currentTime / audio.duration) * 100;
+		    progressBar.style.width = `${progressPercent}%`;
+		    currentTimeEl.textContent = formatTime(audio.currentTime);
+		    totalTimeEl.textContent = formatTime(audio.duration);
+		  });
 
-  // Playlist navigation
-  prevBtn.addEventListener("click", () => {
-    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-    loadTrack(currentTrack);
-  });
+		  progressContainer.addEventListener("click", (e) => {
+		    const width = progressContainer.clientWidth;
+		    const clickX = e.offsetX;
+		    const duration = audio.duration;
+		    audio.currentTime = (clickX / width) * duration;
+		  });
 
-  nextBtn.addEventListener("click", () => {
-    currentTrack = (currentTrack + 1) % playlist.length;
-    loadTrack(currentTrack);
-  });
+		  // Volume
+		  volumeControl.addEventListener("input", () => {
+		    audio.volume = volumeControl.value;
+		  });
 
-  // Auto-play next
-  audio.addEventListener("ended", () => {
-  if (playMode === "repeat") {
-    audio.currentTime = 0;
-    audio.play();
-  } else if (playMode === "shuffle") {
-    let nextTrack;
-    do {
-      nextTrack = Math.floor(Math.random() * playlist.length);
-    } while (nextTrack === currentTrack && playlist.length > 1);
-    currentTrack = nextTrack;
-    loadTrack(currentTrack);
-  } else if (playMode === "normal") {
-    if (currentTrack < playlist.length - 1) {
-      currentTrack++;
-      loadTrack(currentTrack);
-    }
-  }
-  // Si mode = stop → ne rien faire
-});
+		  // Loop
+		  loopBtn.addEventListener("click", () => {
+		  if (playMode === "normal") {
+		    playMode = "repeat";
+		    loopBtn.textContent = "🔂";
+		  } else if (playMode === "repeat") {
+		    playMode = "shuffle";
+		    loopBtn.textContent = "🔀";
+		  } else if (playMode === "shuffle") {
+		    playMode = "stop";
+		    loopBtn.textContent = "⏹️";
+		  } else {
+		    playMode = "normal";
+		    loopBtn.textContent = "🔁";
+		  }
+		  });
 
-  // Mode sombre
-  toggleModeBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-  });
+		  // Playlist navigation
+		  prevBtn.addEventListener("click", () => {
+		    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+		    loadTrack(currentTrack);
+		  });
 
-  // Chargement initial
-  audio.addEventListener("loadedmetadata", () => {
-    totalTimeEl.textContent = formatTime(audio.duration);
-  });
+		  nextBtn.addEventListener("click", () => {
+		    currentTrack = (currentTrack + 1) % playlist.length;
+		    loadTrack(currentTrack);
+		  });
 
-  const playlistContainer = document.getElementById("playlist");
+		  // Auto-play next
+		  audio.addEventListener("ended", () => {
+		  if (playMode === "repeat") {
+		    audio.currentTime = 0;
+		    audio.play();
+		  } else if (playMode === "shuffle") {
+		    let nextTrack;
+		    do {
+		      nextTrack = Math.floor(Math.random() * playlist.length);
+		    } while (nextTrack === currentTrack && playlist.length > 1);
+		    currentTrack = nextTrack;
+		    loadTrack(currentTrack);
+		  } else if (playMode === "normal") {
+		    if (currentTrack < playlist.length - 1) {
+		      currentTrack++;
+		      loadTrack(currentTrack);
+		    }
+		  }
+		  // Si mode = stop → ne rien faire
+		  });
 
-// Générer les items
-function renderPlaylist() {
-  playlistContainer.innerHTML = "";
+		  // Mode sombre
+		  toggleModeBtn.addEventListener("click", () => {
+		    document.body.classList.toggle("dark-mode");
+		  });
 
-  playlist.forEach((track, index) => {
-    const item = document.createElement("div");
-    item.classList.add("playlist-item");
-    item.textContent = `${track.title} - ${track.artist}`;
+		  // Chargement initial
+		  audio.addEventListener("loadedmetadata", () => {
+		    totalTimeEl.textContent = formatTime(audio.duration);
+		  });
 
-    if (index === currentTrack) {
-      item.classList.add("active");
-    }
+		  const playlistContainer = document.getElementById("playlist");
 
-    item.addEventListener("click", () => {
-      currentTrack = index;
-      loadTrack(currentTrack);
-      updateActiveTrack();
-    });
+		  // Générer les items
+		  function renderPlaylist() {
+		  playlistContainer.innerHTML = "";
 
-    playlistContainer.appendChild(item);
-  });
-}
+		  playlist.forEach((track, index) => {
+		    const item = document.createElement("div");
+		    item.classList.add("playlist-item");
+		    item.textContent = `${track.title} - ${track.artist}`;
 
-// Mettre à jour le style actif
-function updateActiveTrack() {
-  const items = document.querySelectorAll(".playlist-item");
-  items.forEach((item, index) => {
-    item.classList.toggle("active", index === currentTrack);
-  });
-}
+		    if (index === currentTrack) {
+		      item.classList.add("active");
+		    }
 
-// Bouton pour télécharger tous les morceaux
-const downloadAllBtn = document.getElementById("downloadAllBtn");
+		    item.addEventListener("click", () => {
+		      currentTrack = index;
+		      loadTrack(currentTrack);
+		      updateActiveTrack();
+		    });
 
-downloadAllBtn.addEventListener("click", () => {
-  playlist.forEach(track => {
-    const link = document.createElement("a");
-    link.href = track.src;
-    link.download = track.src.split("/").pop(); // nom du fichier
-    link.style.display = "none";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  });
-});
+		    playlistContainer.appendChild(item);
+		  });
+		  }
 
-  // Auto load le premier morceau
-  renderPlaylist();
-  loadTrack(currentTrack);
+		  // Mettre à jour le style actif
+		  function updateActiveTrack() {
+		  const items = document.querySelectorAll(".playlist-item");
+		  items.forEach((item, index) => {
+		    item.classList.toggle("active", index === currentTrack);
+		  });
+		  }
 
-  function loadTrack(index) {
-  const track = playlist[index];
-  audio.src = track.src;
-  document.getElementById("trackTitle").textContent = track.title;
-  document.getElementById("trackArtist").textContent = track.artist;
-  document.getElementById("trackAlbum").textContent = track.album;
-  document.getElementById("coverImage").src = track.cover;
-  audio.load();
-  audio.play();
-  playBtn.textContent = "⏸";
-  updateActiveTrack(); // <<< AJOUT
-}
-</script>
-</body>
+		  // Bouton pour télécharger tous les morceaux
+		  const downloadAllBtn = document.getElementById("downloadAllBtn");
+
+		  downloadAllBtn.addEventListener("click", () => {
+		  playlist.forEach(track => {
+		    const link = document.createElement("a");
+		    link.href = track.src;
+		    link.download = track.src.split("/").pop(); // nom du fichier
+		    link.style.display = "none";
+		    document.body.appendChild(link);
+		    link.click();
+		    document.body.removeChild(link);
+		  });
+		  });
+
+		  // Auto load le premier morceau
+		  renderPlaylist();
+		  loadTrack(currentTrack);
+
+		  function loadTrack(index) {
+		  const track = playlist[index];
+		  audio.src = track.src;
+		  document.getElementById("trackTitle").textContent = track.title;
+		  document.getElementById("trackArtist").textContent = track.artist;
+		  document.getElementById("trackAlbum").textContent = track.album;
+		  document.getElementById("coverImage").src = track.cover;
+		  audio.load();
+		  audio.play();
+		  playBtn.textContent = "⏸";
+		  updateActiveTrack(); // <<< AJOUT
+		  }
+		</script>
+	</body>
 </html>
