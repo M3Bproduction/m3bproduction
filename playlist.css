@@ -65,7 +65,7 @@
 
     .mode-toggle {
       margin-top: 10px;
-      padding: 10px 15px;
+      padding: 10px 10px;
   background-color: #3498db;
   color: white;
   border: none;
@@ -73,6 +73,7 @@
   border-radius: 6px;
   cursor: pointer;
     }
+
 .track-info {
   display: flex;
   align-items: center;
@@ -168,7 +169,7 @@
 
 .download-all {
   margin-top: 10px;
-  padding: 10px 15px;
+  padding: 10px 10px;
   background-color: #3498db;
   color: white;
   border: none;
