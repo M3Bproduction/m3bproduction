@@ -114,9 +114,13 @@
 
 .playlist-item {
   padding: 10px 15px;
-  border-bottom: 1px solid #ddd;
   cursor: pointer;
   transition: background 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+  border-bottom: 1px solid #ccc;
 }
 
 .playlist-item:hover {
@@ -184,4 +188,16 @@
 
 .dark-mode .download-all {
   background-color: #2980b9;
+}
+
+.track-title {
+  flex: 1;
+  cursor: pointer;
+}
+
+.download-btn {
+  text-decoration: none;
+  font-size: 1.2em;
+  margin-left: 10px;
+  cursor: pointer;
 }
