@@ -410,6 +410,9 @@ video:hover{
 
 /* ✅ Media queries pour mobile */
 @media (max-width: 600px) {
+	body{
+		padding-bottom: 5rem;
+	}
   nav ul {
     flex-direction: column;
     align-items: center;
@@ -453,6 +456,9 @@ video:hover{
 
 /* Afficher sur écran large uniquement */
 @media (min-width: 768px) {
+	body{
+		padding-top: 6rem;
+	}
 	.logo-m{
 		display: none;
 	}
@@ -462,10 +468,6 @@ video:hover{
 
     .bottom-nav {
         display: none;
-    }
-
-    body {
-        padding-top: 60px; /* éviter que le contenu soit caché sous le header */
     }
 
     .features {
