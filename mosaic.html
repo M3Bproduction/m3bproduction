@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Says'z - Mosaïc</title>
+		<link rel="stylesheet" type="text/css" href="playlist.css">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+	   	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body>
+		<header class="top-nav">
+			<div class="logo">
+				<img src="M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
+				<h2>M3 Music</h2>
+			</div>
+			<nav class="main-nav top-nav-links">
+				<ul>
+			    	<li><a href="index.html">Accueil</a></li>
+				    <li><a href="clips.html">Clips</a></li>
+				    <li><a href="albums.html">Albums</a></li>
+				    <li><a href="a-propos.html">À propos</a></li>
+				  </ul>
+			</nav>
+		</header>
+		<div class="logo-m">
+			<img src="M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
+			<h2>M3 Music</h2>
+		</div>
+
+		<main>
+	  		<div class="audio-player" class="mini">
+	    		<div class="track-info">
+	      			<img id="coverImage" src="" alt="Pochette" class="cover">
+	      			<div class="meta">
+	        			<h3 id="trackTitle">Titre</h3>
+	        			<p id="trackArtist">Artiste</p>
+	        			<p id="trackAlbum">Album</p>
+	      			</div>
+	      			<audio id="myAudio"></audio>
+	    		</div>
+	  
+	  			<div class="controls">
+	    			<button id="prevBtn">⏮️</button>
+	    			<button id="playBtn">▶️</button>
+	    			<button id="nextBtn">⏭️</button>
+	    			<button id="loopBtn">🔁</button>
+	    			<input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" class="volume">
+	  			</div>
+
+	  			<div class="progress-container">
+	    			<div class="progress-bar" id="progressBar"></div>
+	  			</div>
+
+	  			<div class="time-display">
+	    			<span id="currentTime">0:00</span>
+	    			<span id="totalTime">0:00</span>
+	  			</div>
+
+	  			<button class="mode-toggle" id="toggleMode">🌓 Mode Sombre</button>
+				<button id="downloadAllBtn" class="download-all">📥 Télécharger</button>
+			</div>
+			<div class="playlist" id="playlist"></div>
+		</main>
+
+		<footer>
+			<!-- Barre de navigation fixe en bas -->
+			<nav class="bottom-nav">
+				<a href="index.html" class="nav-link">
+					<span class="material-icons">home</span>
+				    <span>Accueil</span>
+				</a>
+				<a href="clips.html" class="nav-link">
+				    <span class="material-icons">movie</span>
+				    <span>Clips</span>
+				</a>
+				<a href="albums.html" class="nav-link">
+				    <span class="material-icons">album</span>
+				    <span>Albums</span>
+				</a>
+				<a href="a-propos.html" class="nav-link">
+				    <span class="material-icons">info</span>
+				    <span>À propos</span>
+				</a>
+			</nav>
+		</footer>
+
+		<script>
+		  const audio = document.getElementById("myAudio");
+		  const playBtn = document.getElementById("playBtn");
+		  const progressBar = document.getElementById("progressBar");
+		  const progressContainer = document.querySelector(".progress-container");
+		  const volumeControl = document.getElementById("volumeControl");
+		  const currentTimeEl = document.getElementById("currentTime");
+		  const totalTimeEl = document.getElementById("totalTime");
+		  const loopBtn = document.getElementById("loopBtn");
+		  let playMode = "normal"; // normal, repeat, shuffle, stop
+		  const prevBtn = document.getElementById("prevBtn");
+		  const nextBtn = document.getElementById("nextBtn");
+		  const toggleModeBtn = document.getElementById("toggleMode");
+
+		  // Playlist
+		  const playlist = [
+		    {src: "Mosaïc/1. INTRO (Fais-le).mp3",title: "1. INTRO (Fais-le)",artist: "Says'z",album: "Mosaïc",cover: "Cover/mosaic.jpg"},
+		    {src: "Mosaïc/2. ESMERALDA (feat. Bamby).mp3",title: "2. ESMERALDA (feat. Bamby)",artist: "Says'z",album: "Mosaïc",cover: "Cover/mosaic.jpg"},
+		    {src: "Mosaïc/3. QUE TOI.mp3",title: "3. QUE TOI",artist: "Says'z",album: "Mosaïc",cover: "Cover/mosaic.jpg"},
+		    {src: "Mosaïc/4. COUCOU MA BELLE.mp3",title: "4. COUCOU MA BELLE",artist: "Says'z",album: "Mosaïc",cover: "Cover/mosaic.jpg"},
+		    {src: "Mosaïc/5. NATHALIE.mp3",title: "5. NATHALIE",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/6. BIG BUNDA GYAL.mp3",title: "6. BIG BUNDA GYAL",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/7. MAPESSA.mp3",title: "7. MAPESSA",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/8. GO LOW.mp3",title: "8. GO LOW",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/9. NÉCESSAIRE.mp3",title: "9. NÉCESSAIRE",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/10. ASSEZ PARLÉ.mp3",title: "10. ASSEZ PARLÉ",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/11. TOUS LES JOURS.mp3",title: "11. TOUS LES JOURS",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/12. T'AS DECONNÉ.mp3",title: "12. T'AS DECONNÉ",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/13. FRENEMY.mp3",title: "13. FRENEMY",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/14. IMPERMÉABLE.mp3",title: "14. IMPERMÉABLE",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"},
+		    {src: "Mosaïc/15. SEUL TOUT.mp3",title: "15. SEUL TOUT",artist: "Says'z",album: "Mosaïc",cover: "WendeRoho.png"}
+		  ];
+
+		  let currentTrack = 0;
+
+		  function loadTrack(index) {
+		  const track = playlist[index];
+		  audio.src = track.src;
+		  document.getElementById("trackTitle").textContent = track.title;
+		  document.getElementById("trackArtist").textContent = track.artist;
+		  document.getElementById("trackAlbum").textContent = track.album;
+		  document.getElementById("coverImage").src = track.cover;
+		  audio.load();
+		  audio.play();
+		  playBtn.textContent = "⏸";
+		  }
+
+		  // Formatage du temps
+		  function formatTime(seconds) {
+		    const min = Math.floor(seconds / 60);
+		    const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
+		    return `${min}:${sec}`;
+		  }
+
+		  playBtn.addEventListener("click", () => {
+		    if (audio.paused) {
+		      audio.play();
+		      playBtn.textContent = "⏸";
+		    } else {
+		      audio.pause();
+		      playBtn.textContent = "▶️";
+		    }
+		  });
+
+		  // Barre de progression
+		  audio.addEventListener("timeupdate", () => {
+		    const progressPercent = (audio.currentTime / audio.duration) * 100;
+		    progressBar.style.width = `${progressPercent}%`;
+		    currentTimeEl.textContent = formatTime(audio.currentTime);
+		    totalTimeEl.textContent = formatTime(audio.duration);
+		  });
+
+		  progressContainer.addEventListener("click", (e) => {
+		    const width = progressContainer.clientWidth;
+		    const clickX = e.offsetX;
+		    const duration = audio.duration;
+		    audio.currentTime = (clickX / width) * duration;
+		  });
+
+		  // Volume
+		  volumeControl.addEventListener("input", () => {
+		    audio.volume = volumeControl.value;
+		  });
+
+		  // Loop
+		  loopBtn.addEventListener("click", () => {
+		  if (playMode === "normal") {
+		    playMode = "repeat";
+		    loopBtn.textContent = "🔂";
+		  } else if (playMode === "repeat") {
+		    playMode = "shuffle";
+		    loopBtn.textContent = "🔀";
+		  } else if (playMode === "shuffle") {
+		    playMode = "stop";
+		    loopBtn.textContent = "⏹️";
+		  } else {
+		    playMode = "normal";
+		    loopBtn.textContent = "🔁";
+		  }
+		  });
+
+		  // Playlist navigation
+		  prevBtn.addEventListener("click", () => {
+		    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+		    loadTrack(currentTrack);
+		  });
+
+		  nextBtn.addEventListener("click", () => {
+		    currentTrack = (currentTrack + 1) % playlist.length;
+		    loadTrack(currentTrack);
+		  });
+
+		  // Auto-play next
+		  audio.addEventListener("ended", () => {
+		  if (playMode === "repeat") {
+		    audio.currentTime = 0;
+		    audio.play();
+		  } else if (playMode === "shuffle") {
+		    let nextTrack;
+		    do {
+		      nextTrack = Math.floor(Math.random() * playlist.length);
+		    } while (nextTrack === currentTrack && playlist.length > 1);
+		    currentTrack = nextTrack;
+		    loadTrack(currentTrack);
+		  } else if (playMode === "normal") {
+		    if (currentTrack < playlist.length - 1) {
+		      currentTrack++;
+		      loadTrack(currentTrack);
+		    }
+		  }
+		  // Si mode = stop → ne rien faire
+		  });
+
+		  // Mode sombre
+		  toggleModeBtn.addEventListener("click", () => {
+		    document.body.classList.toggle("dark-mode");
+		  });
+
+		  // Chargement initial
+		  audio.addEventListener("loadedmetadata", () => {
+		    totalTimeEl.textContent = formatTime(audio.duration);
+		  });
+
+		  const playlistContainer = document.getElementById("playlist");
+
+		  // Générer les items
+		  function renderPlaylist() {
+		  playlistContainer.innerHTML = "";
+
+		  playlist.forEach((track, index) => {
+		    const item = document.createElement("div");
+		    item.classList.add("playlist-item");
+		    item.textContent = `${track.title} - ${track.artist}`;
+
+		    if (index === currentTrack) {
+		      item.classList.add("active");
+		    }
+
+		    item.addEventListener("click", () => {
+		      currentTrack = index;
+		      loadTrack(currentTrack);
+		      updateActiveTrack();
+		    });
+
+		    playlistContainer.appendChild(item);
+		  });
+		  }
+
+		  // Mettre à jour le style actif
+		  function updateActiveTrack() {
+		  const items = document.querySelectorAll(".playlist-item");
+		  items.forEach((item, index) => {
+		    item.classList.toggle("active", index === currentTrack);
+		  });
+		  }
+
+		  // Bouton pour télécharger tous les morceaux
+		  const downloadAllBtn = document.getElementById("downloadAllBtn");
+
+		  downloadAllBtn.addEventListener("click", () => {
+		  playlist.forEach(track => {
+		    const link = document.createElement("a");
+		    link.href = track.src;
+		    link.download = track.src.split("/").pop(); // nom du fichier
+		    link.style.display = "none";
+		    document.body.appendChild(link);
+		    link.click();
+		    document.body.removeChild(link);
+		  });
+		  });
+
+		  // Auto load le premier morceau
+		  renderPlaylist();
+		  loadTrack(currentTrack);
+
+		  function loadTrack(index) {
+		  const track = playlist[index];
+		  audio.src = track.src;
+		  document.getElementById("trackTitle").textContent = track.title;
+		  document.getElementById("trackArtist").textContent = track.artist;
+		  document.getElementById("trackAlbum").textContent = track.album;
+		  document.getElementById("coverImage").src = track.cover;
+		  audio.load();
+		  audio.play();
+		  playBtn.textContent = "⏸";
+		  updateActiveTrack(); // <<< AJOUT
+		  }
+		</script>
+	</body>
+</html>
