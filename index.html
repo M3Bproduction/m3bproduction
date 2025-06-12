@@ -30,9 +30,10 @@
 		</div>
 
 		<div class="search-bar">
-			<input type="text" placeholder="Rechercher des artistes, albums...">
-			<button style="">Rechercher</button>
+  			<input type="text" id="searchInput" placeholder="Rechercher des artistes, albums...">
+  			<button id="searchBtn">Rechercher</button>
 		</div>
+
 
 		<main>
 			<!--Section principale-->
@@ -46,8 +47,7 @@
 
 			<section class="music-section">
 				<h2>Découvrez nos derniers album</h2>
-				<div class="music-list">
-
+				<div class="music-list" id="musicList">
 					<div class="music-item">
 						<a href="mosaic.html"><img src="Cover/mosaic.jpg" alt="Mosaïc"></a>
 						<h3>Mosaïc</h3>
@@ -92,5 +92,28 @@
 			</nav>
 
 		</footer>
+		<script>
+		  document.getElementById("searchBtn").addEventListener("click", function () {
+		    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+		    const musicItems = document.querySelectorAll(".music-item");
+
+		    musicItems.forEach(item => {
+		      const title = item.querySelector("h3").textContent.toLowerCase();
+		      const artist = item.querySelector("p").textContent.toLowerCase();
+
+		      if (title.includes(searchTerm) || artist.includes(searchTerm)) {
+		        item.style.display = "block";
+		      } else {
+		        item.style.display = "none";
+		      }
+		    });
+		  });
+
+		  // Recherche en direct (optionnel)
+		  document.getElementById("searchInput").addEventListener("input", function () {
+		    document.getElementById("searchBtn").click();
+		  });
+		</script>
+
 	</body>
 </html>
