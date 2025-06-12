@@ -225,26 +225,43 @@
 
 		  // Générer les items
 		  function renderPlaylist() {
-		  playlistContainer.innerHTML = "";
+  playlistContainer.innerHTML = "";
 
-		  playlist.forEach((track, index) => {
-		    const item = document.createElement("div");
-		    item.classList.add("playlist-item");
-		    item.textContent = `${track.title} - ${track.artist}`;
+  playlist.forEach((track, index) => {
+    const item = document.createElement("div");
+    item.classList.add("playlist-item");
 
-		    if (index === currentTrack) {
-		      item.classList.add("active");
-		    }
+    // Contenu texte
+    const text = document.createElement("span");
+    text.textContent = `${track.title} - ${track.artist}`;
+    text.classList.add("track-title");
 
-		    item.addEventListener("click", () => {
-		      currentTrack = index;
-		      loadTrack(currentTrack);
-		      updateActiveTrack();
-		    });
+    // Bouton télécharger
+    const downloadBtn = document.createElement("a");
+    downloadBtn.href = track.src;
+    downloadBtn.download = track.src.split("/").pop(); // nom du fichier
+    downloadBtn.textContent = "📥";
+    downloadBtn.classList.add("download-btn");
+    downloadBtn.title = "Télécharger ce morceau";
 
-		    playlistContainer.appendChild(item);
-		  });
-		  }
+    // Clic sur le texte lance la lecture
+    text.addEventListener("click", () => {
+      currentTrack = index;
+      loadTrack(currentTrack);
+      updateActiveTrack();
+    });
+
+    // Ajouter les deux éléments au bloc
+    item.appendChild(text);
+    item.appendChild(downloadBtn);
+
+    if (index === currentTrack) {
+      item.classList.add("active");
+    }
+
+    playlistContainer.appendChild(item);
+  });
+}
 
 		  // Mettre à jour le style actif
 		  function updateActiveTrack() {
