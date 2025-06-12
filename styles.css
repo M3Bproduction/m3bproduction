@@ -446,7 +446,12 @@ video:hover{
   }
 
   .music-list{
-  	display: inline;
+  	display: ruby;
+  }
+
+  .music-item{
+  	width: 45%;
+  	margin: 0.5rem;
   }
 
   .top-nav{
