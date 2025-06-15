@@ -142,7 +142,7 @@ header nav ul li a{
 }
 
 .music-list{
-	display: flex;
+	display: ruby;
 	justify-content: center;
 	gap: 20px;
 }
@@ -153,6 +153,7 @@ header nav ul li a{
 	border-radius: 10px;
 	text-align: center;
 	width: 250px;
+	margin: 0.5rem;
 }
 
 .music-item:hover{
@@ -219,42 +220,6 @@ header nav ul li a{
 
 .albums-item p{
 	font-size: 1rem;
-	color: white;
-}
-
-/*Artistes à découvvrir*/
-.featured-artists h2{
-	font-size: 2rem;
-	margin-bottom: 20px;
-}
-
-.artist-list{
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-	flex-wrap: wrap;
-}
-
-.artist-item{
-	background-color: #00c0ff;
-	padding: 15px;
-	border-radius: 10px;
-	text-align: center;
-	width: 150px;
-}
-
-.artist-item:hover{
-	background-color: #000bff;
-}
-
-.artist-item img{
-	width: 100%;
-	border-radius: 10px;
-	margin-bottom: 15px;
-}
-
-.artist-item h3{
-	font-size: 1.2rem;
 	color: white;
 }
 
@@ -445,13 +410,8 @@ video:hover{
   	margin-bottom: 1rem;
   }
 
-  .music-list{
-  	display: ruby;
-  }
-
   .music-item{
   	width: 40%;
-  	margin: 0.5rem;
   }
 
   .top-nav{
