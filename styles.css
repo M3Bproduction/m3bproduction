@@ -400,7 +400,7 @@ video:hover {
   }
 
   .music-item {
-    width: 100%;
+    width: 40%;
     margin-bottom: 1rem;
   }
 
@@ -434,6 +434,11 @@ video:hover {
 
   .bottom-nav {
     display: none;
+  }
+
+  .toggle-theme-btn {
+  top: 100px;
+  right: 10px;
   }
 
   .features {
