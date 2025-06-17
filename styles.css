@@ -62,25 +62,6 @@ body.dark-mode .albums-item:hover {
   animation: fadeInUp 0.6s ease forwards;
 }
 
-/* Ajout d’un bouton pour activer le mode sombre */
-.toggle-theme-btn {
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  background-color: var(--primary-color);
-  color: var(--white);
-  padding: 10px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  z-index: 10000;
-  transition: var(--transition);
-}
-
-.toggle-theme-btn:hover {
-  background-color: var(--primary-hover);
-}
-
 /* Réinitialisation des styles */
 * {
   margin: 0;
@@ -376,6 +357,21 @@ video:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
+.theme-toggle {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
 /* 📱 Mobile */
 @media (max-width: 600px) {
   body {
@@ -436,7 +432,7 @@ video:hover {
     display: none;
   }
 
-  .toggle-theme-btn {
+  .theme-toggle {
   top: 100px;
   right: 10px;
   }
