@@ -109,6 +109,17 @@
 			  </a>
 			</nav>
 		</footer>
-		<button class="toggle-theme-btn" onclick="document.body.classList.toggle('dark-mode')">🌙 Thème</button>
+		<button class="theme-toggle" id="themeToggle"aria-label="Changer le thème">🌙/☀️</button>
+		<script>
+			// Thème sombre
+		    const toggle = document.getElementById('themeToggle');
+		    if (localStorage.getItem('dark-mode') === 'true') {
+		      document.body.classList.add('dark-mode');
+		    }
+		    toggle.addEventListener('click', () => {
+		      document.body.classList.toggle('dark-mode');
+		      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
+		    });
+		</script>
 	</body>
 </html>
