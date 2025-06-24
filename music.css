@@ -258,7 +258,7 @@ body.dark .artist-profile p{
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
-  padding: 1rem;
+  padding: 0.3rem;
   justify-items: center;
 }
 
