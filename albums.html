@@ -1,137 +1,150 @@
 <!DOCTYPE html>
 <html lang="fr">
-	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
 
-		  gtag('config', 'G-NZWFGJST12');
-		</script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560"
-     	crossorigin="anonymous"></script>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Albums - M3'Music</title>
-		<link rel="stylesheet" type="text/css" href="styles.css">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel="icon" type="image/x-icon" href="favicon.ico">
-	</head>
-	<body>
-		<!--En-tête-->
-		<header class="top-nav">
-			<div class="logo">
-				<img src="M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
-				<h2>M3 Music</h2>
-			</div>
-			<nav class="main-nav top-nav-links">
-			  <ul>
-			    <li><a href="index.html">Accueil</a></li>
-			    <li><a href="clips.html">Clips</a></li>
-			    <li><a href="albums.html">Albums</a></li>
-			    <li><a href="a-propos.html">À propos</a></li>
-			  </ul>
-			</nav>
-		</header>
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albums - M3'Music</title>
+  <link rel="stylesheet" href="music.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <!-- En-tête desktop -->
+  <header class="music-header">
+    <div class="logo-container">
+      <img src="m3-music.png" alt="Logo M3'Music">
+      <h1>M3'Music - Albums</h1>
+    </div>
+    <button id="theme-toggle" aria-label="Changer de thème">
+      <i class="fas fa-moon"></i>
+    </button>
 
-		<div class="logo-m">
-			<img src="M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
-			<h2>M3 Music</h2>
-		</div>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="albums.html" class="active"><i class="fas fa-compact-disc"></i> Albums</a></li>
+        <li><a href="artistes.html"><i class="fas fa-user"></i> Artistes</a></li>
+        <li><a href="clips.html"><i class="fas fa-video"></i> Clips</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher l'artist ou l'album">
+  <button id="searchBtn">Rechercher</button>
+  </div>
+  <!-- Contenu principal -->
+  <main class="music-content">
+    <h2>Vous trouverais ici tous nos albums disponible.</h2>
+    <p>Si vous ne trouvez pas l'album que vous cherchez ou si vous avez des suggestions pour améliorer votre expérience merci de nous le signaler ici <a href="https://wa.me/+2693438945" style="color: green;"><i class="fab fa-whatsapp fa-2x"></i></a> et on l'ajoutera dans peut de temps.</p>
 
-		<div class="search-bar">
-  			<input type="text" id="searchInput" placeholder="Rechercher des artistes, albums...">
-  			<button id="searchBtn">Rechercher</button>
-		</div>
-		
-		<main>
-			<section class="music-section">
-				<p>Tu ne trouves pas l'album que tu cherches dis nous <a href="https://wa.me/+2693438945"><button class="cta-btn" style="padding: 0.3rem;">içi✉</button></a> et on vas l'ajouter pour vous !</p>
-				<h2>Tous nos albums</h2>
-				<div class="music-list" id="musicList">
+    <h2>Choisissez l'album que vous voulais écouter ou télécharger</h2>
+    <section class="playlists">
+      <div class="playlist-card rap">
+        <a href="mosaic.html">
+          <img src="Cover/mosaic.jpg" alt="Mosaïc">
+          <h3>Mosaïc</h3>
+          <p>Says'z</p>
+        </a>
+      </div>
 
-					<div class="music-item">
-						<a href="mosaic.html"><img src="Cover/mosaic.jpg" alt="Mosaïc"></a>
-						<h3>Mosaïc</h3>
-						<p>Says'z</p>
-					</div>
+      <div class="playlist-card classique">
+        <a href="SLK/ndezeanla.html">
+          <img src="SLK/NDEZE ANLA/ndezeanla.jpg" alt="NDEZE ANLA">
+          <h3>NDEZE ANLA</h3>
+          <p>SLK</p>
+        </a>
+      </div>
 
-					<div class="music-item">
-						<a href="SLK/ndezeanla.html"><img src="Cover/ndezeanla.jpg" alt="NDEZE ANLA"></a>
-						<h3>NDEZE ANLA</h3>
-						<p>SLK</p>
-					</div>
+      <div class="playlist-card rap">
+        <a href="SLK/ngamneno.html">
+          <img src="SLK/NGAM NENO/ngamneno.jpg" alt="NGAM NENO">
+          <h3>NGAM NENO</h3>
+          <p>SLK</p>
+        </a>
+      </div>
 
-					<div class="music-item">
-						<a href="SLK/ngamneno.html"><img src="Cover/ngamneno.jpg" alt="NGAM NENO"></a>
-						<h3>NGAM NENO</h3>
-						<p>SLK</p>
-					</div>
+      <div class="playlist-card classique">
+        <a href="Victorious Awax/roho.html">
+          <img src="Victorious Awax/ROHO/roho.jpg" alt="ROHO">
+          <h3>ROHO</h3>
+          <p>Victorious Awax</p>
+        </a>
+      </div>
 
-					<div class="music-item">
-						<a href="nambiye.html"><img src="Cover/Nambiye.webp" alt="Nambiye"></a>
-						<h3>Nambiye</h3>
-						<p>Tommy 10</p>
-					</div>
-				</div>
-			</section>
-		</main>
-		<!--Pied de page-->
-		<footer>
-			<!-- Barre de navigation fixe en bas -->
-			<nav class="bottom-nav">
-			  <a href="index.html" class="nav-link">
-			    <span class="material-icons">home</span>
-			    <span>Accueil</span>
-			  </a>
-			  <a href="clips.html" class="nav-link">
-			    <span class="material-icons">movie</span>
-			    <span>Clips</span>
-			  </a>
-			  <a href="albums.html" class="nav-link" style="color: red;">
-			    <span class="material-icons">album</span>
-			    <span>Albums</span>
-			  </a>
-			  <a href="a-propos.html" class="nav-link">
-			    <span class="material-icons">info</span>
-			    <span>À propos</span>
-			  </a>
-			</nav>
-		</footer>
-		<button class="theme-toggle" id="themeToggle"aria-label="Changer le thème">🌙/☀️</button>
-		<script>
-		  document.getElementById("searchBtn").addEventListener("click", function () {
-		    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
-		    const musicItems = document.querySelectorAll(".music-item");
+      <div class="playlist-card rap">
+        <a href="Victorious Awax/tafauti.html">
+          <img src="Victorious Awax/TafaUti/tafauti.jpg" alt="TafaUti">
+          <h3>TafaUti</h3>
+          <p>Victorious Awax</p>
+        </a>
+      </div>
+    </section>
+  </main>
 
-		    musicItems.forEach(item => {
-		      const title = item.querySelector("h3").textContent.toLowerCase();
-		      const artist = item.querySelector("p").textContent.toLowerCase();
+  <!-- Barre de navigation mobile -->
+  <nav class="nav-mobile">
+    <a href="index.html"><i class="fas fa-home"></i><span>Accueil</span></a>
+    <a href="albums.html" class="active"><i class="fas fa-compact-disc"></i><span>Albums</span></a>
+    <a href="artistes.html"><i class="fas fa-user"></i><span>Artistes</span></a>
+    <a href="clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
+  </nav>
 
-		      if (title.includes(searchTerm) || artist.includes(searchTerm)) {
-		        item.style.display = "block";
-		      } else {
-		        item.style.display = "none";
-		      }
-		    });
-		  });
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const icon = toggle.querySelector("i");
+    const body = document.body;
 
-		  // Thème sombre
-		    const toggle = document.getElementById('themeToggle');
-		    if (localStorage.getItem('dark-mode') === 'true') {
-		      document.body.classList.add('dark-mode');
-		    }
-		    toggle.addEventListener('click', () => {
-		      document.body.classList.toggle('dark-mode');
-		      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
-		    });
+    // Appliquer le thème depuis localStorage
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        body.classList.add("dark");
+        icon.classList.replace("fa-sun", "fa-moon");
+      } else {
+        body.classList.remove("dark");
+        icon.classList.replace("fa-moon", "fa-sun");
+      }
+    }
 
-		  // Recherche en direct (optionnel)
-		  document.getElementById("searchInput").addEventListener("input", function () {
-		    document.getElementById("searchBtn").click();
-		  });
-		</script>
-	</body>
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    toggle.addEventListener("click", () => {
+      const newTheme = body.classList.contains("dark") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
+    });
+
+    //Recherche
+    document.getElementById("searchBtn").addEventListener("click", function () {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const musicItems = document.querySelectorAll(".playlist-card");
+
+        musicItems.forEach(item => {
+          const title = item.querySelector("h3").textContent.toLowerCase();
+          const artist = item.querySelector("p").textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || artist.includes(searchTerm)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+        document.getElementById("searchInput").addEventListener("input", function () {
+        document.getElementById("searchBtn").click();
+      });
+  </script>
+</body>
 </html>
