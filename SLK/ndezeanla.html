@@ -1,327 +1,211 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
 
-		  gtag('config', 'G-NZWFGJST12');
-		</script>
-		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560"
-     	crossorigin="anonymous"></script>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>SLK - NDEZE ANLA</title>
-		<link rel="stylesheet" type="text/css" href="../playlist.css">
-		<link rel="stylesheet" type="text/css" href="../styles.css">
-	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	  <link rel="icon" type="image/x-icon" href="../favicon.ico">
-	</head>
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NDEZE ANLA - M3'Music</title>
+  <link rel="stylesheet" href="../music.css" />
+  <link rel="stylesheet" type="text/css" href="../lecteur.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="dark">
+  <header class="music-header">
+    <div class="logo-container">
+      <img src="../m3-music.png" alt="Logo M3'Music">
+      <h1>M3'Music - NDEZE ANLA</h1>
+    </div>
+    </button>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="../index.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="../albums.html"><i class="fas fa-compact-disc"></i> Albums</a></li>
+        <li><a href="../artistes.html"><i class="fas fa-user"></i> Artistes</a></li>
+        <li><a href="../clips.html"><i class="fas fa-video"></i> Clips</a></li>
+      </ul>
+    </nav>
+  </header>
 
-	<body>
-		<header class="top-nav">
-			<div class="logo">
-				<img src="../M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
-				<h2>M3 Music</h2>
-			</div>
-			<nav class="main-nav top-nav-links">
-				<ul>
-			    	<li><a href="../index.html">Accueil</a></li>
-				    <li><a href="../clips.html">Clips</a></li>
-				    <li><a href="../albums.html">Albums</a></li>
-				    <li><a href="../a-propos.html">À propos</a></li>
-				  </ul>
-			</nav>
-		</header>
-		<div class="logo-m">
-			<img src="../M3Music.webp" alt="Logo M3'STREAM" class="logo-img">
-			<h2>M3 Music</h2>
-		</div>
+  <main class="music-content" style="background-image: url('NDEZE ANLA/ndezeanla.jpg');">
+    <h2>SLK - NDEZE ANLA</h2>
 
-		<main>
-	  		<div class="audio-player" class="mini">
-	    		<div class="track-info">
-	      			<img id="coverImage" src="" alt="Pochette" class="cover">
-	      			<div class="meta">
-	        			<h3 id="trackTitle">Titre</h3>
-	        			<p id="trackArtist">Artiste</p>
-	        			<p id="trackAlbum">Album</p>
-	      			</div>
-	      			<audio id="myAudio"></audio>
-	    		</div>
-	  
-	  			<div class="controls">
-	    			<button id="prevBtn">⏮️</button>
-	    			<button id="playBtn">▶️</button>
-	    			<button id="nextBtn">⏭️</button>
-	    			<button id="loopBtn">🔁</button>
-	    			<input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1" class="volume">
-	  			</div>
+    <section class="audio-player">
+      <div class="track-info">
+        <img id="cover" src="cover.jpg" alt="Pochette">
+        <div>
+          <h3 id="title">Titre</h3>
+          <p id="artist">Artiste</p>
+          <p id="album">Album</p>
+        </div>
+      </div>
 
-	  			<div class="progress-container">
-	    			<div class="progress-bar" id="progressBar"></div>
-	  			</div>
+      <audio id="audio"></audio>
 
-	  			<div class="time-display">
-	    			<span id="currentTime">0:00</span>
-	    			<span id="totalTime">0:00</span>
-	  			</div>
+      <div class="controls">
+        <button id="prev"><i class="fas fa-backward"></i></button>
+        <button id="play"><i class="fas fa-play"></i></button>
+        <button id="next"><i class="fas fa-forward"></i></button>
+        <button id="mode" title="Mode de lecture"><i class="fas fa-music"></i></button>
+        <div>
+        <input type="range" id="progress" value="0">
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+        </div>
+      </div>
 
-	  			<button class="mode-toggle" id="toggleMode">🌓 Nuit/Jour</button>
-				<button id="downloadAllBtn" class="download-all">📥 Télécharger</button>
-			</div>
-			<div class="playlist" id="playlist"></div>
-		</main>
+      <button id="download-all"><i class="fas fa-download"></i> Télécharger toutes les musiques</button>
+    </section>
 
-		<footer>
-			<!-- Barre de navigation fixe en bas -->
-			<nav class="bottom-nav">
-				<a href="../index.html" class="nav-link">
-					<span class="material-icons">home</span>
-				    <span>Accueil</span>
-				</a>
-				<a href="../clips.html" class="nav-link">
-				    <span class="material-icons">movie</span>
-				    <span>Clips</span>
-				</a>
-				<a href="../albums.html" class="nav-link">
-				    <span class="material-icons">album</span>
-				    <span>Albums</span>
-				</a>
-				<a href="../a-propos.html" class="nav-link">
-				    <span class="material-icons">info</span>
-				    <span>À propos</span>
-				</a>
-			</nav>
-		</footer>
+    <div class="playlist" id="playlist"></div>
+  </main>
 
-		<script>
-		  const audio = document.getElementById("myAudio");
-		  const playBtn = document.getElementById("playBtn");
-		  const progressBar = document.getElementById("progressBar");
-		  const progressContainer = document.querySelector(".progress-container");
-		  const volumeControl = document.getElementById("volumeControl");
-		  const currentTimeEl = document.getElementById("currentTime");
-		  const totalTimeEl = document.getElementById("totalTime");
-		  const loopBtn = document.getElementById("loopBtn");
-		  let playMode = "normal"; // normal, repeat, shuffle, stop
-		  const prevBtn = document.getElementById("prevBtn");
-		  const nextBtn = document.getElementById("nextBtn");
-		  const toggleModeBtn = document.getElementById("toggleMode");
+  <nav class="nav-mobile">
+    <a href="../index.html"><i class="fas fa-home"></i><span>Accueil</span></a>
+    <a href="../albums.html"><i class="fas fa-compact-disc"></i><span>Albums</span></a>
+    <a href="../artistes.html"><i class="fas fa-user"></i><span>Artistes</span></a>
+    <a href="../clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
+  </nav>
 
-		  // Playlist
-		  const playlist = [
-		    {src: "NDEZE ANLA/1. SLK - ZE-ANLA.mp3",title: "1. ZE-ANLA",artist: "SLK",album: "NDEZE ANLA",cover: "../Cover/ndezeanla.jpg"},
-		    {src: "NDEZE ANLA/2. SLK - PUSSU.mp3",title: "2. PUSSU",artist: "SLK",album: "NDEZE ANLA",cover: "../Cover/ndezeanla.jpg"},
-		    {src: "NDEZE ANLA/3. SLK - SHOW.mp3",title: "3. SHOW",artist: "SLK",album: "NDEZE ANLA",cover: "../Cover/ndezeanla.jpg"},
-		    {src: "NDEZE ANLA/4. SLK - SHUT-UP.mp3",title: "4. SHUT-UP",artist: "SLK",album: "NDEZE ANLA",cover: "../Cover/ndezeanla.jpg"}
-		  ];
+  <script>
+    const playlist = [
+      { title: "1. ZE-ANLA", artist: "SLK", album: "NDEZE ANLA", src: "NDEZE ANLA/1. SLK - ZE-ANLA.mp3", cover: "NDEZE ANLA/ndezeanla.jpg" },
+      { title: "2. PUSSU", artist: "SLK", album: "NDEZE ANLA", src: "NDEZE ANLA/2. SLK - PUSSU.mp3", cover: "NDEZE ANLA/ndezeanla.jpg" },
+      { title: "3. SHOW", artist: "SLK", album: "NDEZE ANLA", src: "NDEZE ANLA/3. SLK - SHOW.mp3", cover: "NDEZE ANLA/ndezeanla.jpg" },
+      { title: "4. SHUT-UP", artist: "SLK", album: "NDEZE ANLA", src: "NDEZE ANLA/4. SLK - SHUT-UP.mp3", cover: "NDEZE ANLA/ndezeanla.jpg" }
+    ];
 
-		  let currentTrack = 0;
+    let currentTrack = 0;
+    let mode = "normal"; // "normal", "shuffle", "loop"
 
-		  function loadTrack(index) {
-		  const track = playlist[index];
-		  audio.src = track.src;
-		  document.getElementById("trackTitle").textContent = track.title;
-		  document.getElementById("trackArtist").textContent = track.artist;
-		  document.getElementById("trackAlbum").textContent = track.album;
-		  document.getElementById("coverImage").src = track.cover;
-		  audio.load();
-		  audio.play();
-		  playBtn.textContent = "⏸";
-		  }
+    const audio = document.getElementById("audio");
+    const cover = document.getElementById("cover");
+    const title = document.getElementById("title");
+    const artist = document.getElementById("artist");
+    const album = document.getElementById("album");
 
-		  // Formatage du temps
-		  function formatTime(seconds) {
-		    const min = Math.floor(seconds / 60);
-		    const sec = Math.floor(seconds % 60).toString().padStart(2, '0');
-		    return `${min}:${sec}`;
-		  }
+    const playBtn = document.getElementById("play");
+    const nextBtn = document.getElementById("next");
+    const prevBtn = document.getElementById("prev");
+    const modeBtn = document.getElementById("mode");
+    const volume = document.getElementById("volume");
+    const progress = document.getElementById("progress");
 
-		  playBtn.addEventListener("click", () => {
-		    if (audio.paused) {
-		      audio.play();
-		      playBtn.textContent = "⏸";
-		    } else {
-		      audio.pause();
-		      playBtn.textContent = "▶️";
-		    }
-		  });
+    const playlistContainer = document.getElementById("playlist");
 
-		  // Barre de progression
-		  audio.addEventListener("timeupdate", () => {
-		    const progressPercent = (audio.currentTime / audio.duration) * 100;
-		    progressBar.style.width = `${progressPercent}%`;
-		    currentTimeEl.textContent = formatTime(audio.currentTime);
-		    totalTimeEl.textContent = formatTime(audio.duration);
-		  });
-
-		  progressContainer.addEventListener("click", (e) => {
-		    const width = progressContainer.clientWidth;
-		    const clickX = e.offsetX;
-		    const duration = audio.duration;
-		    audio.currentTime = (clickX / width) * duration;
-		  });
-
-		  // Volume
-		  volumeControl.addEventListener("input", () => {
-		    audio.volume = volumeControl.value;
-		  });
-
-		  // Loop
-		  loopBtn.addEventListener("click", () => {
-		  if (playMode === "normal") {
-		    playMode = "repeat";
-		    loopBtn.textContent = "🔂";
-		  } else if (playMode === "repeat") {
-		    playMode = "shuffle";
-		    loopBtn.textContent = "🔀";
-		  } else if (playMode === "shuffle") {
-		    playMode = "stop";
-		    loopBtn.textContent = "⏹️";
-		  } else {
-		    playMode = "normal";
-		    loopBtn.textContent = "🔁";
-		  }
-		  });
-
-		  // Playlist navigation
-		  prevBtn.addEventListener("click", () => {
-		    currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
-		    loadTrack(currentTrack);
-		  });
-
-		  nextBtn.addEventListener("click", () => {
-		    currentTrack = (currentTrack + 1) % playlist.length;
-		    loadTrack(currentTrack);
-		  });
-
-		  // Auto-play next
-		  audio.addEventListener("ended", () => {
-		  if (playMode === "repeat") {
-		    audio.currentTime = 0;
-		    audio.play();
-		  } else if (playMode === "shuffle") {
-		    let nextTrack;
-		    do {
-		      nextTrack = Math.floor(Math.random() * playlist.length);
-		    } while (nextTrack === currentTrack && playlist.length > 1);
-		    currentTrack = nextTrack;
-		    loadTrack(currentTrack);
-		  } else if (playMode === "normal") {
-		    if (currentTrack < playlist.length - 1) {
-		      currentTrack++;
-		      loadTrack(currentTrack);
-		    }
-		  }
-		  // Si mode = stop → ne rien faire
-		  });
-
-		  // Mode sombre
-		  toggleModeBtn.addEventListener("click", () => {
-		    document.body.classList.toggle("dark-mode");
-		  });
-
-		  // Chargement initial
-		  audio.addEventListener("loadedmetadata", () => {
-		    totalTimeEl.textContent = formatTime(audio.duration);
-		  });
-
-		  const playlistContainer = document.getElementById("playlist");
-
-		  // Générer les items
-		  function renderPlaylist() {
-  playlistContainer.innerHTML = "";
-
-  playlist.forEach((track, index) => {
-    const item = document.createElement("div");
-    item.classList.add("playlist-item");
-
-    // Contenu texte
-    const text = document.createElement("span");
-    text.textContent = `${track.title} - ${track.artist}`;
-    text.classList.add("track-title");
-
-    // Bouton télécharger
-    const downloadBtn = document.createElement("a");
-    downloadBtn.href = track.src;
-    downloadBtn.download = track.src.split("/").pop(); // nom du fichier
-    downloadBtn.textContent = "📥";
-    downloadBtn.classList.add("download-btn");
-    downloadBtn.title = "Télécharger ce morceau";
-
-    // Clic sur le texte lance la lecture
-    text.addEventListener("click", () => {
-      currentTrack = index;
-      loadTrack(currentTrack);
-      updateActiveTrack();
-    });
-
-    // Ajouter les deux éléments au bloc
-    item.appendChild(text);
-    item.appendChild(downloadBtn);
-
-    if (index === currentTrack) {
-      item.classList.add("active");
+    function loadTrack(index) {
+      const track = playlist[index];
+      audio.src = track.src;
+      cover.src = track.cover || "cover.jpg";
+      title.textContent = track.title;
+      artist.textContent = track.artist;
+      album.textContent = track.album;
+      audio.play();
+      playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     }
 
-    playlistContainer.appendChild(item);
-  });
-}
+    function renderPlaylist() {
+      playlistContainer.innerHTML = "";
+      playlist.forEach((track, index) => {
+        const item = document.createElement("div");
+        item.className = "playlist-item";
+        item.innerHTML = `
+          <p>${track.title} - ${track.artist}</p>
+          <a href="${track.src}" download><i class="fas fa-download"></i></a>
+        `;
+        item.onclick = () => {
+          currentTrack = index;
+          loadTrack(currentTrack);
+        };
+        playlistContainer.appendChild(item);
+      });
+    }
 
+    playBtn.onclick = () => {
+      if (audio.paused) {
+        audio.play();
+        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      } else {
+        audio.pause();
+        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+      }
+    };
 
-		  // Mettre à jour le style actif
-		  function updateActiveTrack() {
-		  const items = document.querySelectorAll(".playlist-item");
-		  items.forEach((item, index) => {
-		    item.classList.toggle("active", index === currentTrack);
-		  });
-		  }
+    nextBtn.onclick = () => {
+      currentTrack = (currentTrack + 1) % playlist.length;
+      loadTrack(currentTrack);
+    };
 
-		  // Bouton pour télécharger tous les morceaux
-		  const downloadAllBtn = document.getElementById("downloadAllBtn");
+    prevBtn.onclick = () => {
+      currentTrack = (currentTrack - 1 + playlist.length) % playlist.length;
+      loadTrack(currentTrack);
+    };
 
-		  downloadAllBtn.addEventListener("click", () => {
-		  playlist.forEach(track => {
-		    const link = document.createElement("a");
-		    link.href = track.src;
-		    link.download = track.src.split("/").pop(); // nom du fichier
-		    link.style.display = "none";
-		    document.body.appendChild(link);
-		    link.click();
-		    document.body.removeChild(link);
-		  });
-		  });
+    modeBtn.onclick = () => {
+      if (mode === "normal") {
+        mode = "shuffle";
+        modeBtn.innerHTML = '<i class="fas fa-random"></i>';
+      } else if (mode === "shuffle") {
+        mode = "loop";
+        modeBtn.innerHTML = '<i class="fas fa-redo"></i>';
+      } else {
+        mode = "normal";
+        modeBtn.innerHTML = '<i class="fas fa-music"></i>';
+      }
+    };
 
-		  // Auto load le premier morceau
-		  renderPlaylist();
-		  loadTrack(currentTrack);
+    audio.addEventListener("ended", () => {
+      if (mode === "loop") {
+        audio.currentTime = 0;
+        audio.play();
+      } else if (mode === "shuffle") {
+        let nextTrack;
+        do {
+          nextTrack = Math.floor(Math.random() * playlist.length);
+        } while (nextTrack === currentTrack);
+        currentTrack = nextTrack;
+        loadTrack(currentTrack);
+      } else {
+        nextBtn.click();
+      }
+    });
 
-		  function loadTrack(index) {
-		  const track = playlist[index];
-		  audio.src = track.src;
-		  document.getElementById("trackTitle").textContent = track.title;
-		  document.getElementById("trackArtist").textContent = track.artist;
-		  document.getElementById("trackAlbum").textContent = track.album;
-		  document.getElementById("coverImage").src = track.cover;
-		  audio.load();
-		  audio.play();
-		  playBtn.textContent = "⏸";
-		  updateActiveTrack(); // <<< AJOUT
-		  }
+    volume.oninput = () => {
+      audio.volume = volume.value;
+    };
 
-		  // Thème sombre
-	    const toggle = document.getElementById('themeToggle');
-	    if (localStorage.getItem('dark-mode') === 'true') {
-	      document.body.classList.add('dark-mode');
-	    }
-	    toggle.addEventListener('click', () => {
-	      document.body.classList.toggle('dark-mode');
-	      localStorage.setItem('dark-mode', document.body.classList.contains('dark-mode'));
-	    });
-		</script>
-	</body>
+    audio.ontimeupdate = () => {
+      progress.value = (audio.currentTime / audio.duration) * 100 || 0;
+    };
+
+    progress.oninput = () => {
+      audio.currentTime = (progress.value / 100) * audio.duration;
+    };
+
+    document.getElementById("download-all").onclick = () => {
+      playlist.forEach(track => {
+        const link = document.createElement("a");
+        link.href = track.src;
+        link.download = track.src.split("/").pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      });
+    };
+
+    // Initialisation
+    renderPlaylist();
+    loadTrack(currentTrack);
+  </script>
+</body>
 </html>
