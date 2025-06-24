@@ -253,7 +253,8 @@ body.dark .artist-profile p{
 
 /* Section des clips */
 .video-gallery {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
