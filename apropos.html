@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>À propos | M3B Production</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <button id="menu-toggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+    
+    <div class="logo-container">
+      <img src="m3b-production.png" alt="Logo M3B Production">
+      <h1><strong>M3B Production</strong></h1>
+    </div>
+    <button id="theme-toggle" aria-label="Changer de thème">
+      <i class="fas fa-moon"></i>
+    </button>
+    <nav class="navbar">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="nouveau.html">Nouveautés</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="apropos.html" class="active">À propos</a></li>
+        <li><a href="confiden.html">Confidentialité</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenu principal -->
+  <main>
+    <section class="services">
+      <h2>À propos de <strong>M3B Production</strong></h2>
+      <p><strong>M3B Production</strong> est une plateforme numérique éducative et divertissante conçue pour rendre l'apprentissage, la culture<!-- et le jeu--> accessibles à tous.</p>
+
+      <h3>📌 Nos objectifs</h3>
+      <ul>
+        <li><strong>M3'Music :</strong> Proposer un espace pour <strong>écouter et télécharger de la musique</strong>.</li>
+        <li><strong>M3'Info :</strong> <strong>Apprendre la programmation</strong> de manière simple et guidée.</li>
+        <!--<li><strong>M3'Etude :</strong> Aider les élèves à se préparer aux examens (Bac, BPEC, 6ème...)</li>
+        <li><strong>M3'Jeux :</strong> Offrir des jeux amusants pour se détendre intelligemment.</li>-->
+      </ul>
+
+      <h3>🚀 Notre vision</h3>
+      <p>Nous croyons que la technologie peut transformer l’éducation et le quotidien de chacun. Notre but est de devenir un acteur clé dans l’<strong>apprentissage en ligne</strong> aux <strong>Comores</strong> et dans le monde francophone.</p>
+
+      <h3>👤 Message du créateur</h3>
+      <p>“<strong>M3B Production</strong> est une projet qui évolue avec leurs utilisateurs, alors on est ouvert à toute vos suggestions dans notre page <a href="contact.html">contact</a> pour améliorer notre projet car rien n'est totalement parfait. Merci à tous ceux qui soutiennent ce projet.”</p>
+      <p>-- <em>CHAKIRA ALI MZE ABDOUL MADJID</em> --</p>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer>
+    <div class="footer-content">
+      <p>Suivez-nous :</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=100076260035809" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/m3bproduction/" target="_blank">Instagram</a>
+        <a href="https://whatsapp.com/channel/0029VahQA27ATRSmYDeStZ0x" target="_blank">WhatsApp</a>
+        <a href="https://www.youtube.com/channel/UCBzOS17L2fjHyS2onc3wGVw" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <p>&copy; 2025 M3B Production. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Script dark mode + menu mobile -->
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    const icon = toggleButton.querySelector("i");
+    const body = document.body;
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        body.classList.add("dark");
+        icon.classList.replace("fa-sun", "fa-moon");
+      } else {
+        body.classList.remove("dark");
+        icon.classList.replace("fa-moon", "fa-sun");
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    toggleButton.addEventListener("click", () => {
+      const newTheme = body.classList.contains("dark") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
