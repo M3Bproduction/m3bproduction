@@ -12,102 +12,134 @@
 
   <!-- Google Ads -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>M3'Music</title>
-  <link rel="stylesheet" href="music.css">
+  <title>M3B Production</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2196f3">
 </head>
 <body>
-  <!-- En-tête desktop -->
-  <header class="music-header">
+  <!-- Navigation -->
+  <header>
+    <!-- Bouton burger -->
+    <button id="menu-toggle" aria-label="Ouvrir le menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    
     <div class="logo-container">
-      <img src="m3-music.png" alt="Logo M3'Music">
-      <h1>M3'Music</h1>
+      <img src="m3b-production.png" alt="Logo M3B Production">
+      <h1><strong>M3B Production</strong></h1>
     </div>
     <button id="theme-toggle" aria-label="Changer de thème">
       <i class="fas fa-moon"></i>
     </button>
-
-    <nav class="nav-desktop">
-      <ul>
-        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Accueil</a></li>
-        <li><a href="albums.html"><i class="fas fa-compact-disc"></i> Albums</a></li>
-        <li><a href="artistes.html"><i class="fas fa-user"></i> Artistes</a></li>
-        <li><a href="clips.html"><i class="fas fa-video"></i> Clips</a></li>
+    <nav class="navbar">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="nouveau.html">Nouveautés</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="confiden.html">Confidentialité</a></li>
       </ul>
     </nav>
-
   </header>
 
   <!-- Contenu principal -->
-  <main class="music-content">
-    <h2>Bienvenue sur M3'Music</h2>
-    <p>Écoutez et téléchargez vos musiques en illimité.</p>
-
-    <h2>Choisissez votre Playlist</h2>
-    <section class="playlists">
-      <div class="playlist-card rap">
-        <a href="rap.html">
-          <img src="rap.png" alt="Playlist Rap">
-          <h3>Playlist Rap</h3>
-          <p>Découvrez les derniers sons du Rap</p>
+  <main>
+    <section class="services">
+      <h2>Nos Services</h2>
+      <div class="cards">
+        <a href="m3music/music.html" class="card" target="_blank">
+          <img src="m3music/m3-music.png" alt="Icône M3'Music">
+          <div class="card-content">
+            <h3><strong>M3'Music</strong></h3>
+            <p><strong>Écoutez et téléchargez de la musique</strong></p>
+          </div>
         </a>
-      </div>
-
-      <div class="playlist-card classique">
-        <a href="classique.html">
-          <img src="classique.jpg" alt="Playlist Classique">
-          <h3>Playlist Classique</h3>
-          <p>Relaxez-vous avec les musiques classiques</p>
+        <a href="m3info/info.html" class="card" target="_blank">
+          <img src="m3info/m3-info.png" alt="Icône M3'Info">
+          <div class="card-content">
+            <h3><strong>M3'Info</strong></h3>
+            <p><strong>Apprenez la programmation informatique</strong></p>
+          </div>
         </a>
+        <!--<a href="m3etude/etude.html" class="card" target="_blank">
+          <img src="m3etude/m3-etude.png" alt="Icône M3'Etude">
+          <div class="card-content">
+            <h3>M3'Etude</h3>
+            <p>Préparez vos examens (Bac, BPEC, 6ème)</p>
+          </div>
+        </a>
+        <a href="m3jeux/jeux.html" class="card" target="_blank">
+          <img src="m3jeux/m3-jeux.png" alt="Icône M3'Jeux">
+          <div class="card-content">
+            <h3>M3'Jeux</h3>
+            <p>Détendez-vous avec des jeux amusants</p>
+          </div>
+        </a>-->
       </div>
     </section>
   </main>
 
-  <!-- Barre de navigation mobile -->
-  <nav class="nav-mobile">
-    <a href="index.html" class="active"><i class="fas fa-home"></i><span>Accueil</span></a>
-    <a href="albums.html"><i class="fas fa-compact-disc"></i><span>Albums</span></a>
-    <a href="artistes.html"><i class="fas fa-user"></i><span>Artistes</span></a>
-    <a href="clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
-  </nav>
-
+  <!-- Pied de page -->
+  <footer>
+    <div class="footer-content">
+      <p>Suivez-nous :</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=100076260035809" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/m3bproduction/" target="_blank">Instagram</a>
+        <a href="https://whatsapp.com/channel/0029VahQA27ATRSmYDeStZ0x" target="_blank">WhatsApp</a>
+        <a href="https://www.youtube.com/channel/UCBzOS17L2fjHyS2onc3wGVw" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <p>&copy; 2025 M3B Production. Tous droits réservés.</p>
+  </footer>
   <script>
-    const toggle = document.getElementById("theme-toggle");
-    const icon = toggle.querySelector("i");
-    const body = document.body;
+  const toggleButton = document.getElementById("theme-toggle");
+  const icon = toggleButton.querySelector("i");
+  const body = document.body;
 
-    // Appliquer le thème depuis localStorage
-    function applyTheme(theme) {
-      if (theme === "dark") {
-        body.classList.add("dark");
-        icon.classList.replace("fa-sun", "fa-moon");
-      } else {
-        body.classList.remove("dark");
-        icon.classList.replace("fa-moon", "fa-sun");
+  // Appliquer le thème au chargement
+  function applyTheme(theme) {
+    if (theme === "dark") {
+      body.classList.add("dark");
+      icon.classList.replace("fa-sun", "fa-moon");
+    } else {
+      body.classList.remove("dark");
+      icon.classList.replace("fa-moon", "fa-sun");
+    }
+  }
+
+  // Charger depuis localStorage
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+  // Toggle au clic
+  toggleButton.addEventListener("click", () => {
+    const newTheme = body.classList.contains("dark") ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    applyTheme(newTheme);
+  });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
+
+  // Fermer le menu mobile après clic sur un lien
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) {
+        navLinks.classList.remove('show');
       }
-    }
-
-    const savedTheme = localStorage.getItem("theme") || "light";
-    applyTheme(savedTheme);
-
-    toggle.addEventListener("click", () => {
-      const newTheme = body.classList.contains("dark") ? "light" : "dark";
-      localStorage.setItem("theme", newTheme);
-      applyTheme(newTheme);
     });
-
-    // Service Worker
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(registration => console.log('Service Worker enregistré', registration))
-        .catch(error => console.error('Échec Service Worker :', error));
-    }
+  });
   </script>
 </body>
 </html>
