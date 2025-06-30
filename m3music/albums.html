@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albums - M3'Music</title>
+  <link rel="stylesheet" href="music.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- En-tête desktop -->
+  <header class="music-header">
+    <div class="logo-container">
+      <img src="m3-music.png" alt="Logo M3'Music">
+      <h1><strong>M3'Music</strong> - Albums</h1>
+    </div>
+    <button id="theme-toggle" aria-label="Changer de thème">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="music.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="albums.html" class="active"><i class="fas fa-compact-disc"></i> Albums</a></li>
+        <li><a href="artistes.html"><i class="fas fa-user"></i> Artistes</a></li>
+        <li><a href="clips.html"><i class="fas fa-video"></i> Clips</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher l'artist ou l'album">
+  <button id="searchBtn">Rechercher</button>
+  </div>
+  <!-- Contenu principal -->
+  <main class="music-content">
+    <h2>Vous trouverais ici tous nos albums disponible.</h2>
+    <p>Si vous ne trouvez pas l'album que vous cherchez ou si vous avez des suggestions pour améliorer votre expérience merci de nous le signaler ici <a href="https://wa.me/+2693438945" style="color: green;"><i class="fab fa-whatsapp fa-2x"></i></a> et on l'ajoutera dans peut de temps.</p>
+
+    <h2>Choisissez l'album que vous voulais écouter ou télécharger</h2>
+    <section class="playlists">
+      <div class="playlist-card rap">
+        <a href="mosaic.html">
+          <img src="Cover/mosaic.jpg" alt="Mosaïc">
+          <h3><strong>Mosaïc</strong></h3>
+          <p><strong>Says'z</strong></p>
+        </a>
+      </div>
+
+      <div class="playlist-card classique">
+        <a href="SLK/ndezeanla.html">
+          <img src="SLK/NDEZE ANLA/ndezeanla.jpg" alt="NDEZE ANLA">
+          <h3><strong>NDEZE ANLA</strong></h3>
+          <p><strong>SLK</strong></p>
+        </a>
+      </div>
+
+      <div class="playlist-card rap">
+        <a href="SLK/ngamneno.html">
+          <img src="SLK/NGAM NENO/ngamneno.jpg" alt="NGAM NENO">
+          <h3><strong>NGAM NENO</strong></h3>
+          <p><strong>SLK</strong></p>
+        </a>
+      </div>
+
+      <div class="playlist-card classique">
+        <a href="Victorious Awax/roho.html">
+          <img src="Victorious Awax/ROHO/roho.jpg" alt="ROHO">
+          <h3><strong>ROHO</strong></h3>
+          <p><strong>Victorious Awax</strong></p>
+        </a>
+      </div>
+
+      <div class="playlist-card rap">
+        <a href="Victorious Awax/tafauti.html">
+          <img src="Victorious Awax/TafaUti/tafauti.jpg" alt="TafaUti">
+          <h3><strong>TafaUti</strong></h3>
+          <p><strong>Victorious Awax</strong></p>
+        </a>
+      </div>
+      <div class="playlist-card rap">
+        <a href="Victorious Awax/niyenshi.html">
+          <img src="Victorious Awax/NI YENSHI/niyenshi.jpg" alt="NI YENSHI">
+          <h3><strong>NI YENSHI</strong></h3>
+          <p><strong>Victorious Awax</strong></p>
+        </a>
+      </div><!-- 17 nov 2019-->
+    </section>
+  </main>
+
+  <!-- Barre de navigation mobile -->
+  <nav class="nav-mobile">
+    <a href="music.html"><i class="fas fa-home"></i><span>Accueil</span></a>
+    <a href="albums.html" class="active"><i class="fas fa-compact-disc"></i><span>Albums</span></a>
+    <a href="artistes.html"><i class="fas fa-user"></i><span>Artistes</span></a>
+    <a href="clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
+  </nav>
+
+  <script>
+    const toggle = document.getElementById("theme-toggle");
+    const icon = toggle.querySelector("i");
+    const body = document.body;
+
+    // Appliquer le thème depuis localStorage
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        body.classList.add("dark");
+        icon.classList.replace("fa-sun", "fa-moon");
+      } else {
+        body.classList.remove("dark");
+        icon.classList.replace("fa-moon", "fa-sun");
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    toggle.addEventListener("click", () => {
+      const newTheme = body.classList.contains("dark") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
+    });
+
+    //Recherche
+    document.getElementById("searchBtn").addEventListener("click", function () {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const musicItems = document.querySelectorAll(".playlist-card");
+
+        musicItems.forEach(item => {
+          const title = item.querySelector("h3").textContent.toLowerCase();
+          const artist = item.querySelector("p").textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || artist.includes(searchTerm)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+        document.getElementById("searchInput").addEventListener("input", function () {
+        document.getElementById("searchBtn").click();
+      });
+  </script>
+</body>
+</html>
