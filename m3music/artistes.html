@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Artistes - M3'Music</title>
+  <link rel="stylesheet" href="music.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <header class="music-header">
+    <div class="logo-container">
+      <img src="m3-music.png" alt="Logo M3'Music" />
+      <h1><strong>M3'Music</strong> - Artistes</h1>
+    </div>
+    <button id="theme-toggle" aria-label="Changer de thème">
+      <i class="fas fa-moon"></i>
+    </button>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="music.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="albums.html"><i class="fas fa-compact-disc"></i> Albums</a></li>
+        <li><a href="artistes.html" class="active"><i class="fas fa-user"></i> Artistes</a></li>
+        <li><a href="clips.html"><i class="fas fa-video"></i> Clips</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Rechercher l'artist ou le genre de music">
+  <button id="searchBtn">Rechercher</button>
+  </div>
+  <main class="music-content">
+    <h2>Nos Artistes</h2>
+    <p>Si vous ne trouvez pas l'artiste que vous cherchez ou si vous avez des suggestions pour améliorer votre expérience merci de nous le signaler ici <a href="https://wa.me/+2693438945" style="color: green;"><i class="fab fa-whatsapp fa-2x"></i></a> et on l'ajoutera dans peut de temps.</p>
+    <section class="playlists">
+      <div class="playlist-card rap">
+        <img src="SLK/slk.jpg" alt="SLK">
+        <h3><strong>SLK</strong></h3>
+        <p>Rap</p>
+        <a href="SLK/slk.html">Voir plus</a>
+      </div>
+
+      <div class="playlist-card rap">
+        <img src="Victorious Awax/awax.jpg" alt="Victorious Awax">
+        <h3><strong>Victorious Awax</strong></h3>
+        <p>Rap / Trap / RnB</p>
+        <a href="Victorious Awax/awax.html">Voir plus</a>
+      </div>
+
+      <!--
+      <div class="playlist-card rap">
+        <img src="artistes/mze.jpg" alt="Mze Moya">
+        <h3>Mze Moya</h3>
+        <p>Classique / Traditionnel</p>
+        <a href="mze.html">Voir plus</a>
+      </div>-->
+    </section>
+  </main>
+
+  <nav class="nav-mobile">
+    <a href="music.html"><i class="fas fa-home"></i><span>Accueil</span></a>
+    <a href="albums.html"><i class="fas fa-compact-disc"></i><span>Albums</span></a>
+    <a href="artistes.html" class="active"><i class="fas fa-user"></i><span>Artistes</span></a>
+    <a href="clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
+  </nav>
+
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.innerHTML = isDark
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+    });
+
+    //Recherche
+    document.getElementById("searchBtn").addEventListener("click", function () {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const musicItems = document.querySelectorAll(".playlist-card");
+
+        musicItems.forEach(item => {
+          const title = item.querySelector("h3").textContent.toLowerCase();
+          const artist = item.querySelector("p").textContent.toLowerCase();
+
+          if (title.includes(searchTerm) || artist.includes(searchTerm)) {
+            item.style.display = "block";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+        document.getElementById("searchInput").addEventListener("input", function () {
+        document.getElementById("searchBtn").click();
+      });
+  </script>
+</body>
+</html>
