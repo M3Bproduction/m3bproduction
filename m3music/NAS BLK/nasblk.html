@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NAS BLK - M3'Music</title>
+  <link rel="stylesheet" href="../music.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <header class="music-header">
+    <div class="logo-container">
+      <img src="../m3-music.png" alt="Logo M3'Music">
+      <h1>M3'Music</h1>
+    </div>
+    <button id="theme-toggle" title="Changer le thème"><i class="fas fa-moon"></i></button>
+    <nav class="nav-desktop">
+      <ul>
+        <li><a href="../music.html"><i class="fas fa-home"></i> Accueil</a></li>
+        <li><a href="../albums.html"><i class="fas fa-compact-disc"></i> Albums</a></li>
+        <li><a href="../artistes.html" class="active"><i class="fas fa-user"></i> Artistes</a></li>
+        <li><a href="../clips.html"><i class="fas fa-video"></i> Clips</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="music-content">
+    <section class="artist-profile">
+      <img src="nasblk.jpg" alt="NAS BLK">
+      <h2><strong>NAS BLK</strong></h2>
+      <p>...</p>
+    </section>
+
+    <section class="artist-tracks">
+      <h3>Discographies</h3>
+      <section class="playlists">
+      <div class="playlist-card rap">
+        <a href="tsola.html">
+          <img src="tsola.jpg" alt="TSOLA">
+          <h3><strong>TSOLA</strong></h3>
+          <p><strong>NAS BLK x DJOUDJA</strong></p>
+        </a>
+      </div>
+
+      <!--<div class="playlist-card rap">
+        <a href="ngamneno.html">
+          <img src="NGAM NENO/ngamneno.jpg" alt="NGAM NENO">
+          <h3><strong>NGAM NENO</strong></h3>
+          <p><strong>SLK</strong></p>
+        </a>
+      </div>-->
+    </section>
+    <!--<h2>Clips Officiels</h2>
+      <section class="video-gallery">
+
+      </section>-->
+  </section>
+  </main>
+
+  <nav class="nav-mobile">
+    <a href="../music.html"><i class="fas fa-home"></i><span>Accueil</span></a>
+    <a href="../albums.html"><i class="fas fa-compact-disc"></i><span>Albums</span></a>
+    <a href="../artistes.html" class="active"><i class="fas fa-user"></i><span>Artistes</span></a>
+    <a href="../clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
+  </nav>
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+      toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      toggleBtn.innerHTML = isDark
+        ? '<i class="fas fa-sun"></i>'
+        : '<i class="fas fa-moon"></i>';
+    });
+  </script>
+</body>
+</html>
