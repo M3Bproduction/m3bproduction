@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | M3B Production</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <button id="menu-toggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+    
+    <div class="logo-container">
+      <img src="m3b-production.png" alt="Logo M3B Production">
+      <h1><strong>M3B Production</strong></h1>
+    </div>
+    <button id="theme-toggle" aria-label="Changer de thème">
+      <i class="fas fa-moon"></i>
+    </button>
+    <nav class="navbar">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="nouveau.html">Nouveautés</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="confiden.html">Confidentialité</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenu principal -->
+  <main>
+    <section class="services">
+      <h2>📞 Contactez-nous</h2>
+      <p>Vous pouvez nous joindre facilement via nos réseaux sociaux :</p>
+      <div class="cards">
+        <a href="https://wa.me/+2693438945" class="card" style="border-top: 4px solid #25d366;" target="_blank">
+          <i class="fab fa-whatsapp fa-2x"></i>
+          <h3>WhatsApp</h3>
+          <p>Écrivez-nous directement</p>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=100076260035809" class="card" style="border-top: 4px solid #1877f2;" target="_blank">
+          <i class="fab fa-facebook fa-2x"></i>
+          <h3>Facebook</h3>
+          <p>Rejoignez notre communauté</p>
+        </a>
+        <a href="https://www.instagram.com/m3bproduction/" class="card" style="border-top: 4px solid #e1306c;" target="_blank">
+          <i class="fab fa-instagram fa-2x"></i>
+          <h3>Instagram</h3>
+          <p>Suivez notre actu en image</p>
+        </a>
+        <a href="mailto:mbproduction82@gmail.com" class="card" style="border-top: 4px solid #ff9900;" target="_blank">
+          <i class="fas fa-envelope fa-2x"></i>
+          <h3>Email</h3>
+          <p>Envoyez-nous un message</p>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Pied de page -->
+  <footer>
+    <div class="footer-content">
+      <p>Suivez-nous :</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=100076260035809" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/m3bproduction/" target="_blank">Instagram</a>
+        <a href="https://whatsapp.com/channel/0029VahQA27ATRSmYDeStZ0x" target="_blank">WhatsApp</a>
+        <a href="https://www.youtube.com/channel/UCBzOS17L2fjHyS2onc3wGVw" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <p>&copy; 2025 M3B Production. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Script dark mode + menu mobile -->
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    const icon = toggleButton.querySelector("i");
+    const body = document.body;
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        body.classList.add("dark");
+        icon.classList.replace("fa-sun", "fa-moon");
+      } else {
+        body.classList.remove("dark");
+        icon.classList.replace("fa-moon", "fa-sun");
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    toggleButton.addEventListener("click", () => {
+      const newTheme = body.classList.contains("dark") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
