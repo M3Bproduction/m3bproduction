@@ -253,7 +253,9 @@ body.dark .artist-profile p{
 
 /* Section des clips */
 .video-gallery {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
   padding: 2rem;
@@ -353,5 +355,9 @@ body.dark .video-item h3 {
 
   .music-content {
     margin-bottom: 60px;
+  }
+
+  .video-item {
+    max-width: 768;
   }
 }
