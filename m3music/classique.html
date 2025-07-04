@@ -91,7 +91,7 @@
       { title: "Tsi Haba feat Lemir", artist: "Victorious Awax", album: "TafaUti", src: "Victorious Awax/TafaUti/9. Victorious Awax - Tsi Haba feat Lemir.mp3", cover: "Victorious Awax/TafaUti/tafauti.jpg" },
       { title: "Tsidjwandza Yike", artist: "Victorious Awax", album: "NI YENSHI", src: "Victorious Awax/NI YENSHI/7. Victorious Awax - Tsidjwandza Yike.mp3", cover: "Victorious Awax/NI YENSHI/niyenshi.jpg" },
       { title: "TSO NEPVA", artist: "SLK", album: "NGAM NENO", src: "SLK/NGAM NENO/11. SLK - TSO NEPVA.mp3", cover: "SLK/NGAM NENO/ngamneno.jpg" },
-      { title: "TSOLA", artist: "NAS BLK x DJOUDJA", album: "", src: "NAS BLK x DJOUDJA - TSOLA.mp3", cover: "tsola.jpg" },
+      { title: "TSOLA", artist: "NAS BLK x DJOUDJA", album: "", src: "NAS BLK/NAS BLK x DJOUDJA - TSOLA.mp3", cover: "NAS BLK/tsola.jpg" },
       { title: "VAYA", artist: "SLK", album: "NGAM NENO", src: "SLK/NGAM NENO/7. SLK - VAYA.mp3", cover: "SLK/NGAM NENO/ngamneno.jpg" },
       { title: "Wa Zamani feat Lil Simba", artist: "Victorious Awax", album: "TafaUti", src: "Victorious Awax/TafaUti/8. Victorious Awax - Wa Zamani feat Lil Simba.mp3", cover: "Victorious Awax/TafaUti/tafauti.jpg" },
       { title: "Wona", artist: "Victorious Awax", album: "ROHO", src: "Victorious Awax/ROHO/2. Victorious Awax - Wona.mp3", cover: "Victorious Awax/ROHO/roho.jpg" },
@@ -125,6 +125,7 @@
       title.textContent = track.title;
       artist.textContent = track.artist;
       artist.textContent = track.artist;
+      album.textContent = track.album;
       audio.play();
       playBtn.innerHTML = '<i class="fas fa-pause"></i>';
     }
