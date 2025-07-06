@@ -98,6 +98,14 @@
     <a href="clips.html"><i class="fas fa-video"></i><span>Clips</span></a>
   </nav>
 
+  <div id="cookie-banner" class="cookie-banner">
+    <p>
+      Ce site utilise des cookies pour améliorer l’expérience utilisateur et diffuser des publicités personnalisées. 
+      <a href="confiden.html" target="_blank">En savoir plus</a>
+    </p>
+    <button id="accept-cookies">Accepter</button>
+  </div>
+
   <script>
     const toggle = document.getElementById("theme-toggle");
     const icon = toggle.querySelector("i");
@@ -142,6 +150,18 @@
         document.getElementById("searchInput").addEventListener("input", function () {
         document.getElementById("searchBtn").click();
       });
+
+      const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+    if (!localStorage.getItem('cookiesAccepted')) {
+      cookieBanner.style.display = 'flex';
+    }
+
+    acceptCookiesBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieBanner.style.display = 'none';
+    });
   </script>
 </body>
 </html>
