@@ -145,6 +145,37 @@ body.dark .langage-card {
   background-color: #2e7d32;
 }
 
+.cookie-banner {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #1e1e1e;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      z-index: 1000;
+      font-size: 0.95rem;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .cookie-banner.show {
+      display: flex;
+    }
+
+    #accept-cookies {
+      background: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
 @media (max-width: 768px) {
   .nav-desktop {
     display: none;
