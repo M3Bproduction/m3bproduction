@@ -87,6 +87,14 @@
     <p><a href="legale.html">Mentions légales</a></p>
   </footer>
 
+  <div id="cookie-banner" class="cookie-banner">
+    <p>
+      Ce site utilise des cookies pour améliorer l’expérience utilisateur et diffuser des publicités personnalisées. 
+      <a href="confiden.html" target="_blank">En savoir plus</a>
+    </p>
+    <button id="accept-cookies">Accepter</button>
+  </div>
+  
   <!-- Script dark mode + menu mobile -->
   <script>
     const toggleButton = document.getElementById("theme-toggle");
@@ -125,6 +133,18 @@
           navLinks.classList.remove('show');
         }
       });
+    });
+
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookiesBtn = document.getElementById('accept-cookies');
+
+    if (!localStorage.getItem('cookiesAccepted')) {
+      cookieBanner.style.display = 'flex';
+    }
+
+    acceptCookiesBtn.addEventListener('click', () => {
+      localStorage.setItem('cookiesAccepted', 'true');
+      cookieBanner.style.display = 'none';
     });
   </script>
 </body>
