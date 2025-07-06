@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-NZWFGJST12');
+  </script>
+
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7522765186794560" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <title>Mentions légales | M3B Production</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <header>
+    <button id="menu-toggle" aria-label="Ouvrir le menu"><i class="fas fa-bars"></i></button>
+    <div class="logo-container">
+      <img src="m3b-production.png" alt="Logo M3B Production">
+      <h1><strong>Mentions légales</strong></h1>
+    </div>
+    <button id="theme-toggle" aria-label="Changer de thème">
+      <i class="fas fa-moon"></i>
+    </button>
+    <nav class="navbar">
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="nouveau.html">Nouveautés</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="apropos.html">À propos</a></li>
+        <li><a href="confiden.html">Confidentialité</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="services">
+      <h2>1. Éditeur du site</h2>
+      <p>
+        Nom du site : <strong>M3B Production</strong><br>
+        Responsable de la publication : <strong>CHAKIRA ALI MZE ABDOUL MADJID</strong><br>
+        Adresse : <em>BANGOI HAMBOU</em><br>
+        Email : <a href="mailto:mbproduction82@gmail.com">mbproduction82@gmail.com</a><br>
+        Téléphone : <em>+269 343 89 45</em>
+      </p>
+
+      <h2>2. Hébergeur du site</h2>
+      <p>
+        Nom de l'hébergeur : <strong>GitHub, Inc.</strong><br>
+        Adresse : <em>88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis</em><br>
+        Site web : <a href="https://pages.github.com" target="_blank">https://pages.github.com</a>
+      </p>
+
+      <h2>3. Propriété intellectuelle</h2>
+      <p>
+        L’ensemble des contenus présents sur le site (textes, images, musiques, vidéos, logos…) sont protégés par le droit d’auteur.  
+        Toute reproduction, distribution ou utilisation sans autorisation est strictement interdite.  
+        Les musiques disponibles sur le site sont publiées avec les droits nécessaires ou sont libres de droits.
+      </p>
+
+      <h2>4. Données personnelles</h2>
+      <p>
+        Le site peut collecter certaines données personnelles (email, nom, cookies…).  
+        Ces données ne sont jamais revendues et sont utilisées uniquement dans le cadre du fonctionnement du site.  
+        Pour en savoir plus, veuillez consulter la <a href="confiden.html">Politique de confidentialité</a>.
+      </p>
+
+      <h2>5. Responsabilité</h2>
+      <p>
+        Le propriétaire du site ne peut être tenu responsable en cas d’erreur, d’interruption ou de problème d’accès au site.  
+        Les liens externes sont fournis à titre informatif, leur contenu n'engage pas M3B Production.
+      </p>
+    </section>
+  </main>
+
+   <!-- Pied de page -->
+  <footer>
+    <div class="footer-content">
+      <p>Suivez-nous :</p>
+      <div class="socials">
+        <a href="https://www.facebook.com/profile.php?id=100076260035809" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/m3bproduction/" target="_blank">Instagram</a>
+        <a href="https://whatsapp.com/channel/0029VahQA27ATRSmYDeStZ0x" target="_blank">WhatsApp</a>
+        <a href="https://www.youtube.com/channel/UCBzOS17L2fjHyS2onc3wGVw" target="_blank">YouTube</a>
+      </div>
+    </div>
+    <p>&copy; 2025 M3B Production. Tous droits réservés.</p>
+    <p><a href="legale.html">Mentions légales</a></p>
+  </footer>
+
+  <!-- Script dark mode + menu mobile -->
+  <script>
+    const toggleButton = document.getElementById("theme-toggle");
+    const icon = toggleButton.querySelector("i");
+    const body = document.body;
+
+    function applyTheme(theme) {
+      if (theme === "dark") {
+        body.classList.add("dark");
+        icon.classList.replace("fa-sun", "fa-moon");
+      } else {
+        body.classList.remove("dark");
+        icon.classList.replace("fa-moon", "fa-sun");
+      }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    toggleButton.addEventListener("click", () => {
+      const newTheme = body.classList.contains("dark") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+      applyTheme(newTheme);
+    });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
