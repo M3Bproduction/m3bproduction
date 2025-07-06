@@ -171,6 +171,10 @@ footer .socials a:hover {
   cursor: pointer;
 }
 
+p a {
+  color: gold;
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
   .navbar {
