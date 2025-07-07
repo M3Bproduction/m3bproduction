@@ -20,6 +20,8 @@ const ASSETS_TO_CACHE = [
   "/m3music/NAS BLK/tsola.jpg",
   "/m3music/SLK/slk.html",
   "/m3music/SLK/slk.jpg",
+  "/m3music/SLK/ndezeanla.html",
+  "/m3music/SLK/NDEZE ANLA/1. SLK - ZE-ANLA.mp3"
   "/m3music/SLK/NDEZE ANLA/ndezeanla.jpg",
   "/m3music/SLK/NGAM NENO/ngamneno.jpg",
   "/m3music/Victorious Awax/awax.html",
