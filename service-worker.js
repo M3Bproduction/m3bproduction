@@ -2,13 +2,14 @@ const CACHE_NAME = "m3b-production-cache-v1";
 const ASSETS_TO_CACHE = [
   "/",
   "/index.html",
+  "/offline.html",
   "/style.css",
   "/manifest.json",
-  "/m3b-production.png",
   "/favicon.ico",
+  "/m3b-production.png",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
-  "/js/main.js", // ajoute ici tes fichiers JavaScript
+  "/js/main.js",
   "/m3music/music.html",
   "/m3info/info.html",
   "/contact.html",
@@ -27,7 +28,7 @@ self.addEventListener("install", event => {
   self.skipWaiting();
 });
 
-// Activation : nettoyage des anciens caches
+// Activation : suppression des anciens caches
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -43,7 +44,7 @@ self.addEventListener("activate", event => {
   self.clients.claim();
 });
 
-// Fetch : réseau d'abord, puis cache
+// Gestion des requêtes : réseau d'abord, puis cache, puis offline.html pour HTML
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
@@ -58,34 +59,11 @@ self.addEventListener("fetch", event => {
       })
       .catch(() => {
         return caches.match(event.request).then(cached => {
-          return cached || caches.match("/index.html");
+          if (cached) return cached;
+          if (event.request.mode === 'navigate') {
+            return caches.match("/offline.html");
+          }
         });
       })
-  );
-});
-
-self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches.open('m3b-production-cache-v1').then((cache) => {
-      return cache.addAll([
-        '/',
-        '/index.html',
-        '/offline.html',
-        '/style.css',
-        '/m3b-production.png'
-        // ajoute d'autres fichiers nécessaires ici
-      ]);
-    })
-  );
-});
-
-self.addEventListener('fetch', (event) => {
-  event.respondWith(
-    fetch(event.request).catch(() => {
-      // Si échec (ex: offline), et que c’est une requête HTML
-      if (event.request.mode === 'navigate') {
-        return caches.match('/offline.html');
-      }
-    })
   );
 });
