@@ -9,6 +9,8 @@
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#2196f3" />
+  <link rel="icon" href="icons/icon-192x192.png">
+  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
@@ -92,6 +94,12 @@
 
   <!-- JavaScript -->
   <script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(() => console.log("✅ Service Worker enregistré"))
+      .catch(error => console.error("❌ Erreur SW :", error));
+  }
+
     const toggleButton = document.getElementById("theme-toggle");
     const icon = toggleButton.querySelector("i");
     const body = document.body;
@@ -142,18 +150,6 @@
       localStorage.setItem("cookiesAccepted", "true");
       cookieBanner.classList.remove("show");
     });
-
-    if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-        .then(reg => {
-          console.log("✅ Service Worker enregistré avec succès", reg);
-        })
-        .catch(err => {
-          console.error("❌ Échec de l'enregistrement du Service Worker", err);
-        });
-    });
-  }
   </script>
 </body>
 </html>
