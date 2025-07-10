@@ -206,6 +206,12 @@ p a {
       border-radius: 5px;
     }
 
+@media (min-width: 768px) {
+  .navbar {
+    display: none;
+  }
+}
+
 /* RESPONSIVE DESIGN */
 @media (max-width: 768px) {
   .navbar {
