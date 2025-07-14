@@ -48,6 +48,44 @@
       "src": "icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png"
+    },
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshots/home.jpg",
+      "sizes": "1280×720",
+      "type": "image/jpeg",
+      "label": "Accueil"
+    },
+    {
+      "src": "/screenshots/homem.jpg",
+      "sizes": "540×720",
+      "type": "image/jpeg",
+      "label": "Accueil"
+    },
+    {
+      "src": "/screenshots/nouveau.jpg",
+      "sizes": "1280×720",
+      "type": "image/jpeg",
+      "label": "Nouveau"
+    },
+    {
+      "src": "/screenshots/nouveaum.jpg",
+      "sizes": "540×720",
+      "type": "image/jpeg",
+      "label": "Nouveau"
+    },
+    {
+      "src": "/screenshots/contact.jpg",
+      "sizes": "1280×720",
+      "type": "image/jpeg",
+      "label": "Contact"
+    },
+    {
+      "src": "/screenshots/contactm.jpg",
+      "sizes": "540×720",
+      "type": "image/jpeg",
+      "label": "Contact"
     }
   ]
 }
