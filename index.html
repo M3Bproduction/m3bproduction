@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <meta property="og:title" content="M3B Production">
+  <meta property="og:description" content="Écoutez de la musique, apprenez l'informatique, préparez vos examens.">
+  <meta property="og:image" content="/m3b-production.png">
+  <meta property="og:url" content="https://m3bproduction.site">
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="mobile-web-app-capable" content="yes">
@@ -12,11 +17,9 @@
   <title>M3B Production</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2196f3" />
-  <link rel="icon" href="icons/icon-192x192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192x192.png">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-NZWFGJST12"></script>
@@ -50,13 +53,13 @@
       </ul>
     </nav>
   </header>
-
+  <button id="notify-btn" style="display: none;">Envoyer notification</button>
   <!-- Contenu principal -->
-  <main>
+  <main role="main">
     <section class="services">
       <h2>Nos Services</h2>
       <div class="cards">
-        <a href="https://music.m3bproduction.site" class="card">
+        <a href="https://music.m3bproduction.site" class="card" aria-label="M3'Music">
           <img src="logos/m3-music.png" alt="Icône M3'Music" />
           <div class="card-content">
             <h3><strong>M3'Music</strong></h3>
@@ -100,6 +103,32 @@
 
   <!-- JavaScript -->
   <script>
+    document.getElementById("notify-btn").addEventListener("click", () => {
+  sendNotification("Bienvenue sur M3B Production", "Découvrez nos services !");
+});
+    // Demander la permission à l'utilisateur
+    if ('Notification' in window && navigator.serviceWorker) {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          console.log("Notifications autorisées !");
+        }
+      });
+    }
+
+    function sendNotification(title, body) {
+  if (Notification.permission === "granted") {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      reg.showNotification(title, {
+        body: body,
+        icon: '/icons/icon-192x192.png',
+        badge: '/icons/icon-96x96.png',
+        vibrate: [100, 50, 100],
+        data: { dateOfArrival: Date.now() },
+      });
+    });
+  }
+}
+
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/service-worker.js")
       .then(() => console.log("✅ Service Worker enregistré"))
