@@ -1,4 +1,5 @@
-const CACHE_NAME = "m3b-production-cache-v1";
+const CACHE_VERSION = "v2";
+const CACHE_NAME = `m3b-production-cache-${CACHE_VERSION}`;
 const ASSETS_TO_CACHE = [
   "/",
   "/index.html",
@@ -17,6 +18,8 @@ const ASSETS_TO_CACHE = [
 
 // Installation : mise en cache initiale
 self.addEventListener("install", event => {
+  console.log("[SW] Install - cache version:", CACHE_NAME);
+
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(ASSETS_TO_CACHE);
@@ -41,9 +44,12 @@ self.addEventListener("activate", event => {
   self.clients.claim();
 });
 
-// Gestion des requêtes : réseau d'abord, puis cache, puis offline.html pour HTML
+// Gestion des requêtes
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
+  if (event.request.url.includes("favicon.ico")) return;
+
+  console.log("[SW] Fetching:", event.request.url);
 
   event.respondWith(
     fetch(event.request)
@@ -57,7 +63,11 @@ self.addEventListener("fetch", event => {
       .catch(() => {
         return caches.match(event.request).then(cached => {
           if (cached) return cached;
-          if (event.request.mode === 'navigate') {
+
+          if (
+            event.request.mode === "navigate" ||
+            event.request.headers.get("accept").includes("text/html")
+          ) {
             return caches.match("/offline.html");
           }
         });
