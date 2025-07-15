@@ -13,8 +13,7 @@ const ASSETS_TO_CACHE = [
   "/contact.html",
   "/apropos.html",
   "/confiden.html",
-  "/legale.html",
-  "/admin-push.html"
+  "/legale.html"
 ];
 
 // Installation : mise en cache initiale
