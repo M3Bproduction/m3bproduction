@@ -1,76 +1,54 @@
-const CACHE_VERSION = "v2";
-const CACHE_NAME = `m3b-production-cache-${CACHE_VERSION}`;
-const ASSETS_TO_CACHE = [
-  "/",
-  "/index.html",
-  "/offline.html",
-  "/style.css",
-  "/manifest.json",
-  "/favicon.ico",
-  "/m3b-production.png",
-  "/icons/icon-192x192.png",
-  "/icons/icon-512x512.png",
-  "/contact.html",
-  "/apropos.html",
-  "/confiden.html",
-  "/legale.html"
-];
+// This is the service worker with the combined offline experience (Offline page + Offline copy of pages)
 
-// Installation : mise en cache initiale
-self.addEventListener("install", event => {
-  console.log("[SW] Install - cache version:", CACHE_NAME);
+const CACHE = "pwabuilder-offline-page";
 
-  event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(ASSETS_TO_CACHE);
-    })
-  );
-  self.skipWaiting();
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
+const offlineFallbackPage = "ToDo-replace-this-name.html";
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
 });
 
-// Activation : suppression des anciens caches
-self.addEventListener("activate", event => {
+self.addEventListener('install', async (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      )
-    )
+    caches.open(CACHE)
+      .then((cache) => cache.add(offlineFallbackPage))
   );
-  self.clients.claim();
 });
 
-// Gestion des requêtes
-self.addEventListener("fetch", event => {
-  if (event.request.method !== "GET") return;
-  if (event.request.url.includes("favicon.ico")) return;
+if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable();
+}
 
-  console.log("[SW] Fetching:", event.request.url);
+workbox.routing.registerRoute(
+  new RegExp('/*'),
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: CACHE
+  })
+);
 
-  event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(event.request, responseClone);
-        });
-        return response;
-      })
-      .catch(() => {
-        return caches.match(event.request).then(cached => {
-          if (cached) return cached;
+self.addEventListener('fetch', (event) => {
+  if (event.request.mode === 'navigate') {
+    event.respondWith((async () => {
+      try {
+        const preloadResp = await event.preloadResponse;
 
-          if (
-            event.request.mode === "navigate" ||
-            event.request.headers.get("accept").includes("text/html")
-          ) {
-            return caches.match("/offline.html");
-          }
-        });
-      })
-  );
+        if (preloadResp) {
+          return preloadResp;
+        }
+
+        const networkResp = await fetch(event.request);
+        return networkResp;
+      } catch (error) {
+
+        const cache = await caches.open(CACHE);
+        const cachedResp = await cache.match(offlineFallbackPage);
+        return cachedResp;
+      }
+    })());
+  }
 });
