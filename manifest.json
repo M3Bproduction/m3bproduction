@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2196f3",
-  "orientation": "portrait",
+  "orientation": "any",
   "scope": "/",
   "lang": "fr",
   "dir": "ltr",
@@ -71,5 +71,10 @@
       "type": "image/jpeg",
       "label": "Contact"
     }
+  ],
+  "display_override": [
+    "minimal-ui",
+    "fullscreen",
+    "window-controls-overlay"
   ]
 }
