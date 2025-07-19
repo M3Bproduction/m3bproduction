@@ -15,6 +15,7 @@ const ASSETS_TO_CACHE = [
   "/contact.html",
   "/apropos.html",
   "/confiden.html",
+  "/nouveau.html",
   "/legale.html"
 ];
 
